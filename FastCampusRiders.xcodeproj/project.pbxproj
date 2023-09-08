@@ -7,23 +7,72 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C355C4972AD10837002F0705 /* FCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355C4962AD10837002F0705 /* FCConstants.swift */; };
+		FE10192C2AB13F270091C91C /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10192B2AB13F270091C91C /* APIController.swift */; };
+		FE1019B42AB2D2940091C91C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B32AB2D2940091C91C /* ArrayExtension.swift */; };
+		FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */; };
+		FE1019C72AB3F63E0091C91C /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019C62AB3F63E0091C91C /* ViewExtension.swift */; };
+		FE1019C92AB3F8190091C91C /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019C82AB3F8190091C91C /* IntExtension.swift */; };
+		FE1019CB2AB3FB370091C91C /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019CA2AB3FB370091C91C /* OrderDetailViewController.swift */; };
 		FE19AEF82AA6C0EE00FE09A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19AEF72AA6C0EE00FE09A8 /* AppDelegate.swift */; };
 		FE19AEFA2AA6C0EE00FE09A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19AEF92AA6C0EE00FE09A8 /* SceneDelegate.swift */; };
-		FE19AEFC2AA6C0EE00FE09A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19AEFB2AA6C0EE00FE09A8 /* ViewController.swift */; };
 		FE19AEFF2AA6C0EE00FE09A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE19AEFD2AA6C0EE00FE09A8 /* Main.storyboard */; };
 		FE19AF012AA6C0EF00FE09A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE19AF002AA6C0EF00FE09A8 /* Assets.xcassets */; };
 		FE19AF042AA6C0EF00FE09A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE19AF022AA6C0EF00FE09A8 /* LaunchScreen.storyboard */; };
+		FE19AF1A2AA9578E00FE09A8 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19AF162AA9578E00FE09A8 /* DataManager.swift */; };
+		FE19AF1C2AA9578E00FE09A8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19AF182AA9578E00FE09A8 /* LocationManager.swift */; };
+		FE19AF202AAABD8100FE09A8 /* OrderDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19AF1F2AAABD8100FE09A8 /* OrderDetailInfo.swift */; };
+		FE19AF292AAAC63000FE09A8 /* FCStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19AF282AAAC63000FE09A8 /* FCStackView.swift */; };
+		FE19AF2B2AAACD7300FE09A8 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19AF2A2AAACD7300FE09A8 /* ButtonExtension.swift */; };
+		FE9AD80F2ABD4E5300535B47 /* OrderDetailMapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AD80D2ABD4E5300535B47 /* OrderDetailMapViewCell.swift */; };
+		FE9AD8102ABD4E5300535B47 /* OrderDetailDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AD80E2ABD4E5300535B47 /* OrderDetailDescriptionCell.swift */; };
+		FE9AD8142ABD67B900535B47 /* ControlExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9AD8132ABD67B900535B47 /* ControlExtension.swift */; };
+		FED5A46F2AC17FD30050F24D /* ItemDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A46E2AC17FD30050F24D /* ItemDetailInfo.swift */; };
+		FED5A4712AC25FD20050F24D /* OrderDetailTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4702AC25FD20050F24D /* OrderDetailTitleCell.swift */; };
+		FED5A4732AC262C30050F24D /* OrderDetailContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4722AC262C30050F24D /* OrderDetailContactCell.swift */; };
+		FED5A4752AC263F20050F24D /* LocationDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4742AC263F20050F24D /* LocationDetailInfo.swift */; };
+		FED5A4772AC26CF40050F24D /* OrderDetailMemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4762AC26CF40050F24D /* OrderDetailMemoCell.swift */; };
+		FED5A4792AC282A00050F24D /* OrderDetailReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4782AC282A00050F24D /* OrderDetailReceiptCell.swift */; };
+		FED5A47F2AC2BEA80050F24D /* OrderListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A47E2AC2BEA80050F24D /* OrderListTableViewCell.swift */; };
+		FED5A4812AC2C5150050F24D /* OrderCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4802AC2C5150050F24D /* OrderCompletionViewController.swift */; };
+		FEE527322AC5A53F00BC682F /* MBAkit in Frameworks */ = {isa = PBXBuildFile; productRef = FEE527312AC5A53F00BC682F /* MBAkit */; };
+		FEE5277F2AC6A8FF00BC682F /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5277E2AC6A8FF00BC682F /* PhotoManager.swift */; };
+		FEE527812AC91DA400BC682F /* OrderTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE527802AC91DA400BC682F /* OrderTrackingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C355C4962AD10837002F0705 /* FCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCConstants.swift; sourceTree = "<group>"; };
+		FE10192B2AB13F270091C91C /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
+		FE1019B32AB2D2940091C91C /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderListViewController.swift; path = OrderList/OrderListViewController.swift; sourceTree = "<group>"; };
+		FE1019C62AB3F63E0091C91C /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		FE1019C82AB3F8190091C91C /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		FE1019CA2AB3FB370091C91C /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailViewController.swift; path = OrderDetail/OrderDetailViewController.swift; sourceTree = "<group>"; };
 		FE19AEF42AA6C0EE00FE09A8 /* FastCampusRiders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastCampusRiders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE19AEF72AA6C0EE00FE09A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE19AEF92AA6C0EE00FE09A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FE19AEFB2AA6C0EE00FE09A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FE19AEFE2AA6C0EE00FE09A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE19AF002AA6C0EF00FE09A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE19AF032AA6C0EF00FE09A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE19AF052AA6C0EF00FE09A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE19AF162AA9578E00FE09A8 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FE19AF182AA9578E00FE09A8 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		FE19AF1F2AAABD8100FE09A8 /* OrderDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailInfo.swift; sourceTree = "<group>"; };
+		FE19AF282AAAC63000FE09A8 /* FCStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCStackView.swift; sourceTree = "<group>"; };
+		FE19AF2A2AAACD7300FE09A8 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		FE9AD80D2ABD4E5300535B47 /* OrderDetailMapViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDetailMapViewCell.swift; path = OrderDetail/TableViewCell/OrderDetailMapViewCell.swift; sourceTree = "<group>"; };
+		FE9AD80E2ABD4E5300535B47 /* OrderDetailDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderDetailDescriptionCell.swift; path = OrderDetail/TableViewCell/OrderDetailDescriptionCell.swift; sourceTree = "<group>"; };
+		FE9AD8132ABD67B900535B47 /* ControlExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlExtension.swift; sourceTree = "<group>"; };
+		FED5A46E2AC17FD30050F24D /* ItemDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailInfo.swift; sourceTree = "<group>"; };
+		FED5A4702AC25FD20050F24D /* OrderDetailTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailTitleCell.swift; path = OrderDetail/TableViewCell/OrderDetailTitleCell.swift; sourceTree = "<group>"; };
+		FED5A4722AC262C30050F24D /* OrderDetailContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailContactCell.swift; path = OrderDetail/TableViewCell/OrderDetailContactCell.swift; sourceTree = "<group>"; };
+		FED5A4742AC263F20050F24D /* LocationDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailInfo.swift; sourceTree = "<group>"; };
+		FED5A4762AC26CF40050F24D /* OrderDetailMemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailMemoCell.swift; path = OrderDetail/TableViewCell/OrderDetailMemoCell.swift; sourceTree = "<group>"; };
+		FED5A4782AC282A00050F24D /* OrderDetailReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailReceiptCell.swift; path = OrderDetail/TableViewCell/OrderDetailReceiptCell.swift; sourceTree = "<group>"; };
+		FED5A47E2AC2BEA80050F24D /* OrderListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListTableViewCell.swift; sourceTree = "<group>"; };
+		FED5A4802AC2C5150050F24D /* OrderCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderCompletionViewController.swift; path = OrderCompletion/OrderCompletionViewController.swift; sourceTree = "<group>"; };
+		FEE5277E2AC6A8FF00BC682F /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		FEE527802AC91DA400BC682F /* OrderTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderTrackingViewController.swift; path = OrderTracking/OrderTrackingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +80,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE527322AC5A53F00BC682F /* MBAkit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FE1019752AB144250091C91C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE1019EB2ABBD13B0091C91C /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FED5A4722AC262C30050F24D /* OrderDetailContactCell.swift */,
+				FE9AD80E2ABD4E5300535B47 /* OrderDetailDescriptionCell.swift */,
+				FE9AD80D2ABD4E5300535B47 /* OrderDetailMapViewCell.swift */,
+				FED5A4762AC26CF40050F24D /* OrderDetailMemoCell.swift */,
+				FED5A4782AC282A00050F24D /* OrderDetailReceiptCell.swift */,
+				FED5A4702AC25FD20050F24D /* OrderDetailTitleCell.swift */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
 		FE19AEEB2AA6C0EE00FE09A8 = {
 			isa = PBXGroup;
 			children = (
 				FE19AEF62AA6C0EE00FE09A8 /* FastCampusRiders */,
 				FE19AEF52AA6C0EE00FE09A8 /* Products */,
+				FE1019752AB144250091C91C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +129,113 @@
 			children = (
 				FE19AEF72AA6C0EE00FE09A8 /* AppDelegate.swift */,
 				FE19AEF92AA6C0EE00FE09A8 /* SceneDelegate.swift */,
-				FE19AEFB2AA6C0EE00FE09A8 /* ViewController.swift */,
-				FE19AEFD2AA6C0EE00FE09A8 /* Main.storyboard */,
+				FE19AF212AAAC09E00FE09A8 /* Extension */,
+				FE19AF1E2AAABD6B00FE09A8 /* Entity */,
+				FE19AF152AA9576C00FE09A8 /* Domain */,
+				FE19AF272AAAC61700FE09A8 /* Intermidiate */,
+				FE19AF0B2AA9555000FE09A8 /* Presentaion */,
 				FE19AF002AA6C0EF00FE09A8 /* Assets.xcassets */,
 				FE19AF022AA6C0EF00FE09A8 /* LaunchScreen.storyboard */,
 				FE19AF052AA6C0EF00FE09A8 /* Info.plist */,
 			);
 			path = FastCampusRiders;
+			sourceTree = "<group>";
+		};
+		FE19AF0B2AA9555000FE09A8 /* Presentaion */ = {
+			isa = PBXGroup;
+			children = (
+				FED5A4862AC3C8360050F24D /* OrderTracking */,
+				FE19AF262AAAC47000FE09A8 /* OrderCompletion */,
+				FE19AF252AAAC43700FE09A8 /* OrderDetail */,
+				FE19AF242AAAC42100FE09A8 /* OderList */,
+				FE19AEFD2AA6C0EE00FE09A8 /* Main.storyboard */,
+			);
+			path = Presentaion;
+			sourceTree = "<group>";
+		};
+		FE19AF152AA9576C00FE09A8 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FE19AF162AA9578E00FE09A8 /* DataManager.swift */,
+				FE19AF182AA9578E00FE09A8 /* LocationManager.swift */,
+				FEE5277E2AC6A8FF00BC682F /* PhotoManager.swift */,
+				FE10192B2AB13F270091C91C /* APIController.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FE19AF1E2AAABD6B00FE09A8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				FE19AF1F2AAABD8100FE09A8 /* OrderDetailInfo.swift */,
+				FED5A4742AC263F20050F24D /* LocationDetailInfo.swift */,
+				FED5A46E2AC17FD30050F24D /* ItemDetailInfo.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		FE19AF212AAAC09E00FE09A8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FE1019B32AB2D2940091C91C /* ArrayExtension.swift */,
+				FE19AF2A2AAACD7300FE09A8 /* ButtonExtension.swift */,
+				FE9AD8132ABD67B900535B47 /* ControlExtension.swift */,
+				FE1019C82AB3F8190091C91C /* IntExtension.swift */,
+				FE1019C62AB3F63E0091C91C /* ViewExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FE19AF242AAAC42100FE09A8 /* OderList */ = {
+			isa = PBXGroup;
+			children = (
+				FED5A47D2AC2BEA80050F24D /* TableViewCell */,
+				FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */,
+			);
+			name = OderList;
+			sourceTree = "<group>";
+		};
+		FE19AF252AAAC43700FE09A8 /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FE1019EB2ABBD13B0091C91C /* TableViewCell */,
+				FE1019CA2AB3FB370091C91C /* OrderDetailViewController.swift */,
+			);
+			name = OrderDetail;
+			sourceTree = "<group>";
+		};
+		FE19AF262AAAC47000FE09A8 /* OrderCompletion */ = {
+			isa = PBXGroup;
+			children = (
+				FED5A4802AC2C5150050F24D /* OrderCompletionViewController.swift */,
+			);
+			name = OrderCompletion;
+			sourceTree = "<group>";
+		};
+		FE19AF272AAAC61700FE09A8 /* Intermidiate */ = {
+			isa = PBXGroup;
+			children = (
+				C355C4962AD10837002F0705 /* FCConstants.swift */,
+				FE19AF282AAAC63000FE09A8 /* FCStackView.swift */,
+			);
+			path = Intermidiate;
+			sourceTree = "<group>";
+		};
+		FED5A47D2AC2BEA80050F24D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FED5A47E2AC2BEA80050F24D /* OrderListTableViewCell.swift */,
+			);
+			name = TableViewCell;
+			path = OrderList/TableViewCell;
+			sourceTree = "<group>";
+		};
+		FED5A4862AC3C8360050F24D /* OrderTracking */ = {
+			isa = PBXGroup;
+			children = (
+				FEE527802AC91DA400BC682F /* OrderTrackingViewController.swift */,
+			);
+			name = OrderTracking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +254,9 @@
 			dependencies = (
 			);
 			name = FastCampusRiders;
+			packageProductDependencies = (
+				FEE527312AC5A53F00BC682F /* MBAkit */,
+			);
 			productName = FastCampusRiders;
 			productReference = FE19AEF42AA6C0EE00FE09A8 /* FastCampusRiders.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +285,9 @@
 				Base,
 			);
 			mainGroup = FE19AEEB2AA6C0EE00FE09A8;
+			packageReferences = (
+				FEE527302AC5A53F00BC682F /* XCRemoteSwiftPackageReference "MBA-kit" */,
+			);
 			productRefGroup = FE19AEF52AA6C0EE00FE09A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +315,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE19AEFC2AA6C0EE00FE09A8 /* ViewController.swift in Sources */,
+				FE1019B42AB2D2940091C91C /* ArrayExtension.swift in Sources */,
+				FED5A4812AC2C5150050F24D /* OrderCompletionViewController.swift in Sources */,
+				FED5A4772AC26CF40050F24D /* OrderDetailMemoCell.swift in Sources */,
+				FED5A4732AC262C30050F24D /* OrderDetailContactCell.swift in Sources */,
+				FE19AF292AAAC63000FE09A8 /* FCStackView.swift in Sources */,
+				FE9AD8142ABD67B900535B47 /* ControlExtension.swift in Sources */,
+				FED5A46F2AC17FD30050F24D /* ItemDetailInfo.swift in Sources */,
+				FED5A4712AC25FD20050F24D /* OrderDetailTitleCell.swift in Sources */,
+				FED5A47F2AC2BEA80050F24D /* OrderListTableViewCell.swift in Sources */,
+				FE9AD8102ABD4E5300535B47 /* OrderDetailDescriptionCell.swift in Sources */,
+				FED5A4792AC282A00050F24D /* OrderDetailReceiptCell.swift in Sources */,
+				FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */,
+				FE19AF1A2AA9578E00FE09A8 /* DataManager.swift in Sources */,
+				FE1019C92AB3F8190091C91C /* IntExtension.swift in Sources */,
+				C355C4972AD10837002F0705 /* FCConstants.swift in Sources */,
+				FEE5277F2AC6A8FF00BC682F /* PhotoManager.swift in Sources */,
+				FED5A4752AC263F20050F24D /* LocationDetailInfo.swift in Sources */,
+				FE19AF1C2AA9578E00FE09A8 /* LocationManager.swift in Sources */,
 				FE19AEF82AA6C0EE00FE09A8 /* AppDelegate.swift in Sources */,
+				FE1019CB2AB3FB370091C91C /* OrderDetailViewController.swift in Sources */,
 				FE19AEFA2AA6C0EE00FE09A8 /* SceneDelegate.swift in Sources */,
+				FE19AF2B2AAACD7300FE09A8 /* ButtonExtension.swift in Sources */,
+				FE10192C2AB13F270091C91C /* APIController.swift in Sources */,
+				FE1019C72AB3F63E0091C91C /* ViewExtension.swift in Sources */,
+				FEE527812AC91DA400BC682F /* OrderTrackingViewController.swift in Sources */,
+				FE19AF202AAABD8100FE09A8 /* OrderDetailInfo.swift in Sources */,
+				FE9AD80F2ABD4E5300535B47 /* OrderDetailMapViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,13 +488,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92F796HA5V;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastCampusRiders/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,9 +504,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fastcampus.riders.FastCampusRiders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -314,13 +520,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92F796HA5V;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastCampusRiders/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,9 +536,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.fastcampus.riders.FastCampusRiders;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -356,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FEE527302AC5A53F00BC682F /* XCRemoteSwiftPackageReference "MBA-kit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MBKwon/MBA-kit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FEE527312AC5A53F00BC682F /* MBAkit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEE527302AC5A53F00BC682F /* XCRemoteSwiftPackageReference "MBA-kit" */;
+			productName = MBAkit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE19AEEC2AA6C0EE00FE09A8 /* Project object */;
 }
