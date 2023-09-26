@@ -37,9 +37,12 @@ extension PendingOrderListDelegate: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: OrderListTableViewCell.cellIdentifier,
-                                                 for: indexPath)
-        
+        guard let cell = tableView
+            .dequeueReusableCell(withIdentifier: OrderListTableViewCell.cellIdentifier) else {
+            return UITableViewCell()
+        }
+
+
         if let cell = cell as? OrderListTableViewCell,
            let dataInfo = self.dataList[safe: indexPath.row] {
             cell.updateUI(with: dataInfo)

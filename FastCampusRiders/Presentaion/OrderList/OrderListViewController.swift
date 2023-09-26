@@ -13,34 +13,47 @@ final class OrderListViewController: UIViewController {
     
     @IBOutlet private weak var orderCategoryView: FCStackView!
     @IBOutlet weak var orderListView: UITableView!
-    
-    private(set) var viewModel = OrderListViewModel()
-    private(set) var viewInteractor = OrderListViewInteractor()
+
+    private(set) var microBean: MicroBean<OrderListViewController, OrderListViewModel, OrderListViewInteractor>?
     private(set) var cancellables = Set<AnyCancellable>()
+
+    enum SegueIdentifier {
+        static let goToOrderDetail = "goToOrderDetail"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        self.bindViewModel(self.viewModel)
+        self.microBean = MicroBean(withVC: self,
+                                   viewModel: OrderListViewModel(),
+                                   viewInteractor: OrderListViewInteractor())
+
+        self.bindCategoryEvent()
         self.updateData()
     }
-    
-    enum SegueIdentifier {
-        static let goToOrderDetail = "goToOrderDetail"
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.microBean?.handle(interactionMessage: .resumeTimer)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.microBean?.handle(interactionMessage: .suspendTimer)
     }
 }
 
 extension OrderListViewController {
     
     private func updateData() {
-        self.viewModel.handleMessage(OrderListInput.getOrderList)
+        self.microBean?.handle(inputMessage: .getOrderList)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? OrderDetailViewController,
-           let orderID = sender as? Int64 {
-            vc.orderID = orderID
+           let orderID = sender as? String {
+            vc.set(orderID: orderID) 
         } else {
             assertionFailure("undefined order ID")
         }
@@ -62,30 +75,15 @@ extension OrderListViewController: ViewControllerConfigurable {
         case updateOrderList(orderList: [OrderDetailInfo])
     }
     
-    func bindViewModel(_ viewModel: OrderListViewModel) {
-        viewModel.outputSubject
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: self.handleResult)
-            .store(in: &self.cancellables)
-        
+    func bindCategoryEvent() {
         self.orderCategoryView
             .selectedItemSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] selectedIndex in
                 guard let self = self else { return }
-                self.viewInteractor
-                    .handleMessage(.selectIndex(index: selectedIndex,
-                                                vc: self))
-                
+                self.microBean?
+                    .handle(interactionMessage: .selectIndex(index: selectedIndex, vc: self))
             }.store(in: &self.cancellables)
-    }
-    
-    func handleResult(_ result: Result<OrderListOutput, Error>) {
-        result
-            .map(self.convertToInteraction(from:))
-            .fold(success: self.viewInteractor.handleMessage, failure: { error in
-                print(error.localizedDescription)
-            })
     }
 }
 
@@ -101,6 +99,9 @@ extension OrderListViewController: ViewContollerInteractable {
                              vc: OrderListViewController)
         
         case selectIndex(index: Int, vc: OrderListViewController)
+
+        case suspendTimer
+        case resumeTimer
     }
     
     func convertToInteraction(from outputMessage: OrderListOutput) -> OrderListIM {

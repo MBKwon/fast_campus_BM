@@ -10,10 +10,11 @@ import UIKit
 
 class OrderDetailViewDelegate: NSObject {
     private let viewController: OrderDetailViewController
+    private let OrderDetailInfo: OrderDetailInfo
     
     private var detailInfoList: [OrderDetailCellType]
     private enum OrderDetailCellType {
-        case map(detailInfo: OrderDetailInfo)
+        case map(detailInfo: OrderDetailInfo, routes: [CLLocation]?)
         case description(detailInfo: OrderDetailInfo)
         case foldableCell(title: String,
                           cellInfo: OrderDetailCellFoldableType,
@@ -22,14 +23,14 @@ class OrderDetailViewDelegate: NSObject {
         
         var cellHeight: CGFloat {
             switch self {
-            case .map:
-                return 289.0
-                
-            case .description:
-                return 430.0
-                
-            case .foldableCell:
-                return 52.0
+                case .map:
+                    return 289.0
+                    
+                case .description:
+                    return 430.0
+                    
+                case .foldableCell:
+                    return 52.0
             }
         }
     }
@@ -42,19 +43,31 @@ class OrderDetailViewDelegate: NSObject {
         
         var cellHeight: CGFloat {
             switch self {
-            case .memo, .receiptInfo:
-                return UITableView.automaticDimension
-            case .storeInfo, .destinationInfo:
-                return 143.0
+                case .memo, .receiptInfo:
+                    return UITableView.automaticDimension
+                case .storeInfo, .destinationInfo:
+                    return 143.0
             }
         }
     }
     
-    init(detailInfo: OrderDetailInfo, on viewController: OrderDetailViewController) {
+    init(detailInfo: OrderDetailInfo,
+         on viewController: OrderDetailViewController) {
         self.viewController = viewController
-        
+        self.OrderDetailInfo = detailInfo
+        self.detailInfoList = OrderDetailViewDelegate.setupTableViewData(detailInfo: detailInfo, routes: nil)
+    }
+}
+
+extension OrderDetailViewDelegate {
+    func drawRoutes(_ routes: [CLLocation]?) {
+        self.detailInfoList = OrderDetailViewDelegate.setupTableViewData(detailInfo: self.OrderDetailInfo, routes: routes)
+    }
+    
+    private static func setupTableViewData(detailInfo: OrderDetailInfo,
+                                           routes: [CLLocation]?) -> [OrderDetailCellType] {
         var detailInfoType: [OrderDetailCellType] = [
-            .map(detailInfo: detailInfo),
+            .map(detailInfo: detailInfo, routes: routes),
             .description(detailInfo: detailInfo)
         ]
         
@@ -85,7 +98,7 @@ class OrderDetailViewDelegate: NSObject {
                           textColor: UIColor(white: 0.188, alpha: 1.0))
         ])
         
-        self.detailInfoList = detailInfoType
+        return detailInfoType
     }
 }
 
@@ -97,76 +110,96 @@ extension OrderDetailViewDelegate: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cellType = self.detailInfoList[section]
         switch cellType {
-        case .map, .description:
-            return 1
-        case .foldableCell(_, _, let isFolded, _):
-            if isFolded {
+            case .map, .description:
                 return 1
-            } else {
-                return 2
-            }
+            case .foldableCell(_, _, let isFolded, _):
+                if isFolded {
+                    return 1
+                } else {
+                    return 2
+                }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellType = self.detailInfoList[indexPath.section]
         switch cellType {
-        case .map(let detailInfo):
-            let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailMapViewCell.cellIdentifier,
-                                                     for: indexPath)
-            
-            if let cell = cell as? OrderDetailMapViewCell {
-                cell.bindNavigationAction(self.presentDirectionActionSheet(with: detailInfo))
-            }
-            return cell
-            
-        case .description(let detailInfo):
-            let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailDescriptionCell.cellIdentifier,
-                                                     for: indexPath)
-            
-            if let cell = cell as? OrderDetailDescriptionCell {
-                cell.updateUI(with: detailInfo)
-            }
-            return cell
-            
-        case .foldableCell(let title, let cellInfo, let isFolded, let textColor):
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailTitleCell.cellIdentifier,
+            case .map(let detailInfo, let routes):
+                let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailMapViewCell.cellIdentifier,
                                                          for: indexPath)
                 
-                if let cell = cell as? OrderDetailTitleCell {
-                    cell.updateUI(with: title, isFolded: isFolded, color: textColor)
+                if let cell = cell as? OrderDetailMapViewCell {
+                    if let routes = routes {
+                        cell.drawRoute(routeData: routes)
+                    }
+                    cell.bindNavigationAction(self.presentDirectionActionSheet(with: detailInfo))
+                    cell.bindRouteAction {
+                        let trackOrderSegue = OrderDetailViewController.SegueIdentifier.trackOrder
+                        self.viewController.performSegue(withIdentifier: trackOrderSegue,
+                                                         sender: detailInfo)
+                    }
                 }
                 return cell
-            } else {
-                switch cellInfo {
-                case .memo(let memo):
-                    let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailMemoCell.cellIdentifier,
-                                                             for: indexPath)
-                    
-                    if let cell = cell as? OrderDetailMemoCell {
-                        cell.updateUI(with: memo)
+                
+            case .description(let detailInfo):
+                let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailDescriptionCell.cellIdentifier,
+                                                         for: indexPath)
+                
+                if let cell = cell as? OrderDetailDescriptionCell {
+                    cell.updateUI(with: detailInfo)
+                    cell.bindActionButton { dealInfo in
+                        switch dealInfo.status {
+                            case .pending:
+                                print("배달로 변경")
+                            case .delivering:
+                                let completionSegue = OrderDetailViewController.SegueIdentifier.completeDelivery
+                                self.viewController.performSegue(withIdentifier: completionSegue,
+                                                                 sender: dealInfo.id)
+                            case .completed:
+                                print("이미 완료")
+                        }
                     }
-                    return cell
-                case .storeInfo(let locationInfo, let tintColor),
-                        .destinationInfo(let locationInfo, let tintColor):
-                    let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailContactCell.cellIdentifier,
-                                                             for: indexPath)
-                    
-                    if let cell = cell as? OrderDetailContactCell {
-                        cell.updateUI(with: locationInfo, color: tintColor)
-                    }
-                    return cell
-                case .receiptInfo(let detailInfo):
-                    let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailReceiptCell.cellIdentifier,
-                                                             for: indexPath)
-                    
-                    if let cell = cell as? OrderDetailReceiptCell {
-                        cell.updateUI(with: detailInfo)
-                    }
-                    return cell
                 }
-            }
+                return cell
+                
+            case .foldableCell(let title, let cellInfo, let isFolded, let textColor):
+                if indexPath.row == 0 {
+                    let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailTitleCell.cellIdentifier,
+                                                             for: indexPath)
+                    
+                    if let cell = cell as? OrderDetailTitleCell {
+                        cell.updateUI(with: title, isFolded: isFolded, color: textColor)
+                    }
+                    return cell
+                } else {
+                    switch cellInfo {
+                        case .memo(let memo):
+                            let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailMemoCell.cellIdentifier,
+                                                                     for: indexPath)
+                            
+                            if let cell = cell as? OrderDetailMemoCell {
+                                cell.updateUI(with: memo)
+                            }
+                            return cell
+                        case .storeInfo(let locationInfo, let tintColor),
+                                .destinationInfo(let locationInfo, let tintColor):
+                            let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailContactCell.cellIdentifier,
+                                                                     for: indexPath)
+                            
+                            if let cell = cell as? OrderDetailContactCell {
+                                cell.updateUI(with: locationInfo, color: tintColor)
+                            }
+                            return cell
+                        case .receiptInfo(let detailInfo):
+                            let cell = tableView.dequeueReusableCell(withIdentifier: OrderDetailReceiptCell.cellIdentifier,
+                                                                     for: indexPath)
+                            
+                            if let cell = cell as? OrderDetailReceiptCell {
+                                cell.updateUI(with: detailInfo)
+                            }
+                            return cell
+                    }
+                }
         }
     }
 }
@@ -175,34 +208,34 @@ extension OrderDetailViewDelegate: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellType = self.detailInfoList[indexPath.section]
         switch cellType {
-        case .map, .description:
-            return cellType.cellHeight
-            
-        case .foldableCell(_, let cellInfo, _, _):
-            if indexPath.row == 0 {
+            case .map, .description:
                 return cellType.cellHeight
-            } else {
-                return cellInfo.cellHeight
-            }
+                
+            case .foldableCell(_, let cellInfo, _, _):
+                if indexPath.row == 0 {
+                    return cellType.cellHeight
+                } else {
+                    return cellInfo.cellHeight
+                }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellType = self.detailInfoList[indexPath.section]
         switch cellType {
-        case .map, .description:
-            do { }
-            
-        case .foldableCell(let title, let cellInfo, let isFolded, let textColor):
-            if indexPath.row == 0 {
-                self.detailInfoList[indexPath.section] = .foldableCell(title: title,
-                                                                       cellInfo: cellInfo,
-                                                                       isFolded: !isFolded,
-                                                                       textColor: textColor)
-                tableView.reloadSections([indexPath.section], with: .automatic)
-            } else {
+            case .map, .description:
                 do { }
-            }
+                
+            case .foldableCell(let title, let cellInfo, let isFolded, let textColor):
+                if indexPath.row == 0 {
+                    self.detailInfoList[indexPath.section] = .foldableCell(title: title,
+                                                                           cellInfo: cellInfo,
+                                                                           isFolded: !isFolded,
+                                                                           textColor: textColor)
+                    tableView.reloadSections([indexPath.section], with: .automatic)
+                } else {
+                    do { }
+                }
         }
     }
 }
@@ -229,14 +262,14 @@ extension OrderDetailViewDelegate {
                 mapAppsList.compactMap { mapItem in
                     UIAlertAction(title: mapItem.appName, style: .default) { _ in
                         switch dealInfo.status {
-                        case .pending:
-                            mapItem.openAppToGetDirections(with: dealInfo.storeInfo.locationCoordinate,
-                                                           name: dealInfo.storeInfo.locationName)
-                        case .delivering:
-                            mapItem.openAppToGetDirections(with: dealInfo.destinationInfo.locationCoordinate,
-                                                           name: dealInfo.destinationInfo.locationName)
-                        case .completed:
-                            assertionFailure("The order is completed")
+                            case .pending:
+                                mapItem.openAppToGetDirections(with: dealInfo.storeInfo.locationCoordinate,
+                                                               name: dealInfo.storeInfo.locationName)
+                            case .delivering:
+                                mapItem.openAppToGetDirections(with: dealInfo.destinationInfo.locationCoordinate,
+                                                               name: dealInfo.destinationInfo.locationName)
+                            case .completed:
+                                assertionFailure("The order is completed")
                         }
                     }
                 }.forEach(actionSheet.addAction(_:))

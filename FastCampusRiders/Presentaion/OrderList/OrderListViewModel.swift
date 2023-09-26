@@ -25,8 +25,8 @@ class OrderListViewModel: ViewModelConfigurable {
 extension OrderListViewModel {
     private func getOrderList() {
         Task {
-            await API.shared
-                .request(path: API.Path.orderList, method: .get)
+            await APIController.shared
+                .request(path: APIController.Path.orderList, method: .get)
                 .decode(decoder: [OrderDetailInfo].self)
                 .map(VC.O.updateOrderList(orderList:))
                 .send(through: self.outputSubject)

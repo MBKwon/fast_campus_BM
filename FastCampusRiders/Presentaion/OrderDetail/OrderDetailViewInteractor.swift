@@ -5,13 +5,14 @@
 //  Created by Moonbeom KWON on 2023/09/22.
 //
 
+import CoreLocation
 import Foundation
 import MBAkit
 
 class OrderDetailViewInteractor: ViewInteractorConfigurable {
     typealias VC = OrderDetailViewController
     var detailViewDelegate: OrderDetailViewDelegate?
-    
+
     func handleMessage(_ interactionMessage: VC.IM) {
         switch interactionMessage {
         case .updateDetailView(let orderDetailInfo, let vc):
@@ -19,6 +20,13 @@ class OrderDetailViewInteractor: ViewInteractorConfigurable {
             vc.tableView.dataSource = detailViewDelegate
             vc.tableView.delegate = detailViewDelegate
             vc.tableView.reloadData()
+            case .drawRoute(let locations, let vc):
+                guard let detailViewDelegate = self.detailViewDelegate else { return }
+                detailViewDelegate.drawRoutes(locations)
+                vc.tableView.dataSource = detailViewDelegate
+                vc.tableView.delegate = detailViewDelegate
+                vc.tableView.reloadData()
+
         }
     }
 }

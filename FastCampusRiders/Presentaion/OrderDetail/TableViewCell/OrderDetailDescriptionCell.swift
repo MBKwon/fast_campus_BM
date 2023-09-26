@@ -28,10 +28,21 @@ class OrderDetailDescriptionCell: UITableViewCell {
     @IBOutlet private weak var delivaryMilestone: UIView!
     
     static let cellIdentifier = "OrderDetailDescriptionCell"
+    
+    private var dealInfo: OrderDetailInfo?
 }
 
 extension OrderDetailDescriptionCell {
+    func bindActionButton(_ action: @escaping (OrderDetailInfo) -> Void) {
+        self.delivaryButton.addAction({ [weak self] in
+            guard let dealInfo = self?.dealInfo else { return }
+            action(dealInfo)
+        })
+    }
+    
     func updateUI(with dealInfo: OrderDetailInfo) {
+        self.dealInfo = dealInfo
+        
         let pixel = 1 / UIScreen().scale
         self.departureMilestone.layer.borderWidth = pixel
         self.departureMilestone.layer.borderColor = UIColor.black.cgColor
@@ -53,9 +64,12 @@ extension OrderDetailDescriptionCell {
         
         self.delivaryButton.layer.cornerRadius = 5.0
         
+        let enabledColor = UIColor(red: 0.157, green: 0.761, blue: 0.737, alpha: 1)
+        let disabledColor = UIColor.lightGray
         switch dealInfo.status {
         case .pending:
             self.delivaryButtonTitle.text = "배차 요청"
+            self.delivaryButton.backgroundColor = enabledColor
             if dealInfo.cookingEstimatedTime > 0 {
                 self.estimatedTimeLabel.text = "\(dealInfo.cookingEstimatedTime) 남음"
                 self.currentStatusLabel.text = "조리중"
@@ -66,11 +80,13 @@ extension OrderDetailDescriptionCell {
         case .delivering:
             self.estimatedTimeLabel.text = nil
             self.currentStatusLabel.text = "배달중"
-            self.delivaryButtonTitle.text = "배달 완료 요청"
+            self.delivaryButtonTitle.text = "전달 완료"
+            self.delivaryButton.backgroundColor = enabledColor
         case .completed:
             self.estimatedTimeLabel.text = nil
             self.currentStatusLabel.text = "배달완료"
             self.delivaryButtonTitle.text = "배달 완료"
+            self.delivaryButton.backgroundColor = disabledColor
         }
     }
 }

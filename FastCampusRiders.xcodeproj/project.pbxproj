@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE10192C2AB13F270091C91C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10192B2AB13F270091C91C /* API.swift */; };
-		FE10199E2AB147780091C91C /* MBAkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1019922AB1475B0091C91C /* MBAkit.framework */; };
+		C355C4972AD10837002F0705 /* FCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355C4962AD10837002F0705 /* FCConstants.swift */; };
+		C3AEB2792ACB0C3700EC3552 /* OrderTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEB2782ACB0C3700EC3552 /* OrderTrackingViewModel.swift */; };
+		C3AEB27B2ACB0DE300EC3552 /* OrderTrackingViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AEB27A2ACB0DE300EC3552 /* OrderTrackingViewInteractor.swift */; };
+		FE10192C2AB13F270091C91C /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10192B2AB13F270091C91C /* APIController.swift */; };
 		FE1019B42AB2D2940091C91C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B32AB2D2940091C91C /* ArrayExtension.swift */; };
 		FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */; };
 		FE1019C12AB2E1F00091C91C /* PendingOrderListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019BA2AB2E1F00091C91C /* PendingOrderListDelegate.swift */; };
@@ -46,29 +48,20 @@
 		FED5A4752AC263F20050F24D /* LocationDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4742AC263F20050F24D /* LocationDetailInfo.swift */; };
 		FED5A4772AC26CF40050F24D /* OrderDetailMemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4762AC26CF40050F24D /* OrderDetailMemoCell.swift */; };
 		FED5A4792AC282A00050F24D /* OrderDetailReceiptCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4782AC282A00050F24D /* OrderDetailReceiptCell.swift */; };
-		FED5A47B2AC282E70050F24D /* OrderListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A47A2AC282E70050F24D /* OrderListTableViewCell.swift */; };
+		FED5A47F2AC2BEA80050F24D /* OrderListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A47E2AC2BEA80050F24D /* OrderListTableViewCell.swift */; };
+		FED5A4812AC2C5150050F24D /* OrderCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4802AC2C5150050F24D /* OrderCompletionViewController.swift */; };
+		FED5A4832AC3B36E0050F24D /* OrderCompletionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4822AC3B36E0050F24D /* OrderCompletionViewModel.swift */; };
+		FED5A4852AC3B6C50050F24D /* OrderCompletionViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED5A4842AC3B6C50050F24D /* OrderCompletionViewInteractor.swift */; };
+		FEE527322AC5A53F00BC682F /* MBAkit in Frameworks */ = {isa = PBXBuildFile; productRef = FEE527312AC5A53F00BC682F /* MBAkit */; };
+		FEE5277F2AC6A8FF00BC682F /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE5277E2AC6A8FF00BC682F /* PhotoManager.swift */; };
+		FEE527812AC91DA400BC682F /* OrderTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE527802AC91DA400BC682F /* OrderTrackingViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FE1019912AB1475B0091C91C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FE10198D2AB1475B0091C91C /* MBAkit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FE1019812AB147360091C91C;
-			remoteInfo = MBAkit;
-		};
-		FE10199C2AB147750091C91C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FE10198D2AB1475B0091C91C /* MBAkit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FE1019802AB147360091C91C;
-			remoteInfo = MBAkit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		FE10192B2AB13F270091C91C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		FE10198D2AB1475B0091C91C /* MBAkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MBAkit.xcodeproj; path = MBAkit/MBAkit.xcodeproj; sourceTree = SOURCE_ROOT; };
+		C355C4962AD10837002F0705 /* FCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCConstants.swift; sourceTree = "<group>"; };
+		C3AEB2782ACB0C3700EC3552 /* OrderTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderTrackingViewModel.swift; path = OrderTracking/OrderTrackingViewModel.swift; sourceTree = "<group>"; };
+		C3AEB27A2ACB0DE300EC3552 /* OrderTrackingViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderTrackingViewInteractor.swift; path = OrderTracking/OrderTrackingViewInteractor.swift; sourceTree = "<group>"; };
+		FE10192B2AB13F270091C91C /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		FE1019B32AB2D2940091C91C /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderListViewController.swift; path = OrderList/OrderListViewController.swift; sourceTree = "<group>"; };
 		FE1019BA2AB2E1F00091C91C /* PendingOrderListDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingOrderListDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +101,12 @@
 		FED5A4742AC263F20050F24D /* LocationDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailInfo.swift; sourceTree = "<group>"; };
 		FED5A4762AC26CF40050F24D /* OrderDetailMemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailMemoCell.swift; path = OrderDetail/TableViewCell/OrderDetailMemoCell.swift; sourceTree = "<group>"; };
 		FED5A4782AC282A00050F24D /* OrderDetailReceiptCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailReceiptCell.swift; path = OrderDetail/TableViewCell/OrderDetailReceiptCell.swift; sourceTree = "<group>"; };
-		FED5A47A2AC282E70050F24D /* OrderListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderListTableViewCell.swift; path = FastCampusRiders/Presentaion/OrderList/TableViewCell/OrderListTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		FED5A47E2AC2BEA80050F24D /* OrderListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListTableViewCell.swift; sourceTree = "<group>"; };
+		FED5A4802AC2C5150050F24D /* OrderCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderCompletionViewController.swift; path = OrderCompletion/OrderCompletionViewController.swift; sourceTree = "<group>"; };
+		FED5A4822AC3B36E0050F24D /* OrderCompletionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderCompletionViewModel.swift; path = OrderCompletion/OrderCompletionViewModel.swift; sourceTree = "<group>"; };
+		FED5A4842AC3B6C50050F24D /* OrderCompletionViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderCompletionViewInteractor.swift; path = OrderCompletion/OrderCompletionViewInteractor.swift; sourceTree = "<group>"; };
+		FEE5277E2AC6A8FF00BC682F /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		FEE527802AC91DA400BC682F /* OrderTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderTrackingViewController.swift; path = OrderTracking/OrderTrackingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE10199E2AB147780091C91C /* MBAkit.framework in Frameworks */,
+				FEE527322AC5A53F00BC682F /* MBAkit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,14 +126,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FE10198E2AB1475B0091C91C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FE1019922AB1475B0091C91C /* MBAkit.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		FE1019B92AB2E1F00091C91C /* Delegate */ = {
@@ -182,7 +172,6 @@
 		FE19AEF62AA6C0EE00FE09A8 /* FastCampusRiders */ = {
 			isa = PBXGroup;
 			children = (
-				FE10198D2AB1475B0091C91C /* MBAkit.xcodeproj */,
 				FE19AEF72AA6C0EE00FE09A8 /* AppDelegate.swift */,
 				FE19AEF92AA6C0EE00FE09A8 /* SceneDelegate.swift */,
 				FE19AF212AAAC09E00FE09A8 /* Extension */,
@@ -200,6 +189,7 @@
 		FE19AF0B2AA9555000FE09A8 /* Presentaion */ = {
 			isa = PBXGroup;
 			children = (
+				FED5A4862AC3C8360050F24D /* OrderTracking */,
 				FE19AF262AAAC47000FE09A8 /* OrderCompletion */,
 				FE19AF252AAAC43700FE09A8 /* OrderDetail */,
 				FE19AF242AAAC42100FE09A8 /* OderList */,
@@ -213,7 +203,8 @@
 			children = (
 				FE19AF162AA9578E00FE09A8 /* DataManager.swift */,
 				FE19AF182AA9578E00FE09A8 /* LocationManager.swift */,
-				FE10192B2AB13F270091C91C /* API.swift */,
+				FEE5277E2AC6A8FF00BC682F /* PhotoManager.swift */,
+				FE10192B2AB13F270091C91C /* APIController.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -243,7 +234,7 @@
 		FE19AF242AAAC42100FE09A8 /* OderList */ = {
 			isa = PBXGroup;
 			children = (
-				FE9AD8062ABD3FE900535B47 /* TableViewCell */,
+				FED5A47D2AC2BEA80050F24D /* TableViewCell */,
 				FE1019B92AB2E1F00091C91C /* Delegate */,
 				FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */,
 				FE1019BD2AB2E1F00091C91C /* OrderListViewInteractor.swift */,
@@ -268,6 +259,9 @@
 		FE19AF262AAAC47000FE09A8 /* OrderCompletion */ = {
 			isa = PBXGroup;
 			children = (
+				FED5A4802AC2C5150050F24D /* OrderCompletionViewController.swift */,
+				FED5A4842AC3B6C50050F24D /* OrderCompletionViewInteractor.swift */,
+				FED5A4822AC3B36E0050F24D /* OrderCompletionViewModel.swift */,
 			);
 			name = OrderCompletion;
 			sourceTree = "<group>";
@@ -275,6 +269,7 @@
 		FE19AF272AAAC61700FE09A8 /* Intermidiate */ = {
 			isa = PBXGroup;
 			children = (
+				C355C4962AD10837002F0705 /* FCConstants.swift */,
 				FE19AF282AAAC63000FE09A8 /* FCStackView.swift */,
 			);
 			path = Intermidiate;
@@ -288,14 +283,6 @@
 			name = Delegate;
 			sourceTree = "<group>";
 		};
-		FE9AD8062ABD3FE900535B47 /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				FED5A47A2AC282E70050F24D /* OrderListTableViewCell.swift */,
-			);
-			path = TableViewCell;
-			sourceTree = "<group>";
-		};
 		FED5A4632AC117C60050F24D /* Directions */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +294,25 @@
 			);
 			name = Directions;
 			path = OrderDetail/Directions;
+			sourceTree = "<group>";
+		};
+		FED5A47D2AC2BEA80050F24D /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FED5A47E2AC2BEA80050F24D /* OrderListTableViewCell.swift */,
+			);
+			name = TableViewCell;
+			path = OrderList/TableViewCell;
+			sourceTree = "<group>";
+		};
+		FED5A4862AC3C8360050F24D /* OrderTracking */ = {
+			isa = PBXGroup;
+			children = (
+				FEE527802AC91DA400BC682F /* OrderTrackingViewController.swift */,
+				C3AEB27A2ACB0DE300EC3552 /* OrderTrackingViewInteractor.swift */,
+				C3AEB2782ACB0C3700EC3552 /* OrderTrackingViewModel.swift */,
+			);
+			name = OrderTracking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,9 +329,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				FE10199D2AB147750091C91C /* PBXTargetDependency */,
 			);
 			name = FastCampusRiders;
+			packageProductDependencies = (
+				FEE527312AC5A53F00BC682F /* MBAkit */,
+			);
 			productName = FastCampusRiders;
 			productReference = FE19AEF42AA6C0EE00FE09A8 /* FastCampusRiders.app */;
 			productType = "com.apple.product-type.application";
@@ -354,30 +362,17 @@
 				Base,
 			);
 			mainGroup = FE19AEEB2AA6C0EE00FE09A8;
+			packageReferences = (
+				FEE527302AC5A53F00BC682F /* XCRemoteSwiftPackageReference "MBA-kit" */,
+			);
 			productRefGroup = FE19AEF52AA6C0EE00FE09A8 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = FE10198E2AB1475B0091C91C /* Products */;
-					ProjectRef = FE10198D2AB1475B0091C91C /* MBAkit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				FE19AEF32AA6C0EE00FE09A8 /* FastCampusRiders */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		FE1019922AB1475B0091C91C /* MBAkit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = MBAkit.framework;
-			remoteRef = FE1019912AB1475B0091C91C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FE19AEF22AA6C0EE00FE09A8 /* Resources */ = {
@@ -398,6 +393,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE1019B42AB2D2940091C91C /* ArrayExtension.swift in Sources */,
+				FED5A4812AC2C5150050F24D /* OrderCompletionViewController.swift in Sources */,
 				FED5A4772AC26CF40050F24D /* OrderDetailMemoCell.swift in Sources */,
 				FED5A4732AC262C30050F24D /* OrderDetailContactCell.swift in Sources */,
 				FED5A46A2AC117C60050F24D /* MapNaverDirections.swift in Sources */,
@@ -406,16 +402,22 @@
 				FE9AD8142ABD67B900535B47 /* ControlExtension.swift in Sources */,
 				FED5A46F2AC17FD30050F24D /* ItemDetailInfo.swift in Sources */,
 				FED5A4712AC25FD20050F24D /* OrderDetailTitleCell.swift in Sources */,
-				FED5A47B2AC282E70050F24D /* OrderListTableViewCell.swift in Sources */,
+				C3AEB2792ACB0C3700EC3552 /* OrderTrackingViewModel.swift in Sources */,
+				FED5A47F2AC2BEA80050F24D /* OrderListTableViewCell.swift in Sources */,
 				FE9AD8102ABD4E5300535B47 /* OrderDetailDescriptionCell.swift in Sources */,
 				FED5A4792AC282A00050F24D /* OrderDetailReceiptCell.swift in Sources */,
 				FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */,
 				FE19AF1A2AA9578E00FE09A8 /* DataManager.swift in Sources */,
+				FED5A4832AC3B36E0050F24D /* OrderCompletionViewModel.swift in Sources */,
 				FE1019C92AB3F8190091C91C /* IntExtension.swift in Sources */,
+				C355C4972AD10837002F0705 /* FCConstants.swift in Sources */,
+				FED5A4852AC3B6C50050F24D /* OrderCompletionViewInteractor.swift in Sources */,
+				FEE5277F2AC6A8FF00BC682F /* PhotoManager.swift in Sources */,
 				FE1019C12AB2E1F00091C91C /* PendingOrderListDelegate.swift in Sources */,
 				FED5A4752AC263F20050F24D /* LocationDetailInfo.swift in Sources */,
 				FE1019C42AB2E1F00091C91C /* OrderListViewInteractor.swift in Sources */,
 				FE9AD8122ABD4E5900535B47 /* OrderDetailViewDelegate.swift in Sources */,
+				C3AEB27B2ACB0DE300EC3552 /* OrderTrackingViewInteractor.swift in Sources */,
 				FE1019C52AB2E1F00091C91C /* OrderListViewModel.swift in Sources */,
 				FE1019C32AB2E1F00091C91C /* CompletedOrderListDelegate.swift in Sources */,
 				FE9AD80C2ABD4E4800535B47 /* OrderDetailViewModel.swift in Sources */,
@@ -428,8 +430,9 @@
 				FE9AD80A2ABD4E1400535B47 /* OrderDetailViewInteractor.swift in Sources */,
 				FED5A46B2AC117C60050F24D /* MapGoogleDirections.swift in Sources */,
 				FE19AF2B2AAACD7300FE09A8 /* ButtonExtension.swift in Sources */,
-				FE10192C2AB13F270091C91C /* API.swift in Sources */,
+				FE10192C2AB13F270091C91C /* APIController.swift in Sources */,
 				FE1019C72AB3F63E0091C91C /* ViewExtension.swift in Sources */,
+				FEE527812AC91DA400BC682F /* OrderTrackingViewController.swift in Sources */,
 				FE1019C22AB2E1F00091C91C /* InProgressOrderListDelegate.swift in Sources */,
 				FE19AF202AAABD8100FE09A8 /* OrderDetailInfo.swift in Sources */,
 				FE9AD80F2ABD4E5300535B47 /* OrderDetailMapViewCell.swift in Sources */,
@@ -437,14 +440,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FE10199D2AB147750091C91C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MBAkit;
-			targetProxy = FE10199C2AB147750091C91C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FE19AEFD2AA6C0EE00FE09A8 /* Main.storyboard */ = {
@@ -587,6 +582,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92F796HA5V;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastCampusRiders/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -617,6 +614,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92F796HA5V;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FastCampusRiders/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -662,6 +661,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FEE527302AC5A53F00BC682F /* XCRemoteSwiftPackageReference "MBA-kit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MBKwon/MBA-kit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FEE527312AC5A53F00BC682F /* MBAkit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEE527302AC5A53F00BC682F /* XCRemoteSwiftPackageReference "MBA-kit" */;
+			productName = MBAkit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FE19AEEC2AA6C0EE00FE09A8 /* Project object */;
 }

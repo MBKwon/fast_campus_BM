@@ -10,6 +10,15 @@ import CoreLocation
 import Foundation
 
 class LocationManager: NSObject {
+    struct LocationData {
+        let heading: CLHeading?
+        let location: CLLocation
+
+        static let `default` = LocationData(heading: nil, location: defaultLocation)
+        private static let defaultLocation = CLLocation(latitude: 37.54330366639085,
+                                                        longitude: 127.04455548501139)
+    }
+
     enum LocationError: Error {
         case permissionDenied
         case permissionRestricted
@@ -17,11 +26,8 @@ class LocationManager: NSObject {
     }
     
     private let locationManager = CLLocationManager()
-    private static let defaultLocation = CLLocation(latitude: 37.54330366639085,
-                                                    longitude: 127.04455548501139)
-    
-    let locationSubject = CurrentValueSubject<Result<CLLocation, LocationError>, Never>(.success(defaultLocation))
-    
+    let locationSubject = CurrentValueSubject<Result<LocationData, LocationError>, Never>(.success(LocationData.default))
+
     override init() {
         super.init()
         self.locationManager.distanceFilter = 1_000
@@ -29,9 +35,12 @@ class LocationManager: NSObject {
         self.locationManager.delegate = self
         self.checkAutorizationStatus()
     }
-    
-    func updateCurrentLocation() {
+
+    func updateCurrentLocation(withHeading: Bool = false) {
         self.locationManager.startUpdatingLocation()
+        if withHeading {
+            self.locationManager.startUpdatingHeading()
+        }
     }
 }
     
@@ -81,8 +90,14 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        manager.stopUpdatingLocation()
+        // manager.stopUpdatingLocation()
         guard let currentLocation = locations.first else { return }
-        self.locationSubject.send(.success(currentLocation))
+        let existingHeading = try? self.locationSubject.value.get().heading
+        self.locationSubject.send(.success(LocationData(heading: existingHeading, location: currentLocation)))
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        guard let location = manager.location else { return }
+        self.locationSubject.send(.success(LocationData(heading: newHeading, location: location)))
     }
 }

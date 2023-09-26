@@ -23,10 +23,10 @@ class OrderDetailViewModel: ViewModelConfigurable {
 }
 
 extension OrderDetailViewModel {
-    private func requestOrderDetailInfo(with orderID: Int64) {
+    private func requestOrderDetailInfo(with orderID: String) {
         Task {
-            await API.shared
-                .request(path: API.Path.orderDetail(orderID: orderID), method: .get)
+            await APIController.shared
+                .request(path: APIController.Path.orderDetail(orderID: orderID), method: .get)
                 .decode(decoder: OrderDetailInfo.self)
                 .map(VC.O.updateOrderDetail(orderDetailInfo:))
                 .send(through: self.outputSubject)

@@ -10,7 +10,7 @@ import Foundation
 import MBAkit
 
 struct OrderDetailInfo: Decodable {
-    let id: Int64
+    let id: String
     let status: OrderStatus
     let isSingleDelivery: Bool
     let cookingEstimatedTime: Int
@@ -25,7 +25,10 @@ struct OrderDetailInfo: Decodable {
     
     let storeInfo: LocationDetailInfo
     let destinationInfo: LocationDetailInfo
-    
+
+    let registerd: Date
+    let deadline: Date
+
     var priceLabelText: String {
         return "\(self.price.formattedNumber) \(self.priceUnit)"
     }
@@ -65,12 +68,17 @@ struct OrderDetailInfo: Decodable {
     }
 }
 
+extension OrderDetailInfo: Equatable {
+    static func == (lhs: OrderDetailInfo, rhs: OrderDetailInfo) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
+
 extension OrderDetailInfo {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        let orderId = try values.decode(String.self, forKey: .id)
-        self.id = Int64(orderId)!
+        self.id = try values.decode(String.self, forKey: .id)
 
         self.isSingleDelivery = try values.decode(Bool.self, forKey: .isSingleDelivery)
         self.cookingEstimatedTime = try values.decode(Int.self, forKey: .cookingEstimatedTime)
@@ -93,5 +101,11 @@ extension OrderDetailInfo {
         
         self.storeInfo = try values.decode(LocationDetailInfo.self, forKey: .storeInfo)
         self.destinationInfo = try values.decode(LocationDetailInfo.self, forKey: .destinationInfo)
+
+        let reg = arc4random() % (30 * 60)
+        self.registerd = Date(timeIntervalSinceNow: -TimeInterval(reg))
+
+        let eta = arc4random() % (30 * 60)
+        self.deadline = Date(timeIntervalSinceNow: TimeInterval(eta))
     }
 }

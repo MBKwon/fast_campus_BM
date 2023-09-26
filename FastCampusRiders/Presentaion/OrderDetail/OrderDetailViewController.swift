@@ -6,20 +6,27 @@
 //
 
 import Combine
+import CoreLocation
+import MapKit
 import MBAkit
 import UIKit
 
 class OrderDetailViewController: UITableViewController {
+
+    private(set) var microBean: MicroBean<OrderDetailViewController, OrderDetailViewModel, OrderDetailViewInteractor>?
     
-    private(set) var viewInteractor = OrderDetailViewInteractor()
-    private(set) var viewModel = OrderDetailViewModel()
-    private(set) var cancellables = Set<AnyCancellable>()
-    
-    var orderID: Int64?
+    private(set) var orderID: String?
+
+    enum SegueIdentifier {
+        static let completeDelivery = "completeDelivery"
+        static let trackOrder = "trackOrder"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bindViewModel(self.viewModel)
+        self.microBean = MicroBean(withVC: self,
+                                   viewModel: OrderDetailViewModel(),
+                                   viewInteractor: OrderDetailViewInteractor())
         
         if let orderID = self.orderID {
             self.updateDetailInfoView(with: orderID)
@@ -27,11 +34,33 @@ class OrderDetailViewController: UITableViewController {
             assertionFailure("orderID is nil")
         }
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.microBean?.handle(interactionMessage: .drawRoute(locations: [
+            CLLocation(latitude: 37.3589, longitude: 127.1055),
+            CLLocation(latitude: 37.5159, longitude: 127.0989)
+        ], vc: self))
+    }
 }
 
 extension OrderDetailViewController {
-    func updateDetailInfoView(with orderID: Int64) {
-        self.viewModel.handleMessage(.getOrderDetail(orderID: orderID))
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? OrderCompletionViewController,
+           let orderID = sender as? String {
+            vc.set(orderID: orderID)
+        } else if let vc = segue.destination as? OrderTrackingViewController,
+                  let orderInfo = sender as? OrderDetailInfo {
+            vc.set(orderInfo: orderInfo)
+        }
+    }
+    
+    func set(orderID: String) {
+        self.orderID = orderID
+    }
+    
+    func updateDetailInfoView(with orderID: String) {
+        self.microBean?.handle(inputMessage: .getOrderDetail(orderID: orderID))
     }
 }
 
@@ -41,28 +70,12 @@ extension OrderDetailViewController: ViewControllerConfigurable {
     
     typealias I = OrderDetailInputMessage
     enum OrderDetailInputMessage: InputMessage {
-        case getOrderDetail(orderID: Int64)
+        case getOrderDetail(orderID: String)
     }
     
     typealias O = OrderDetailOutputMessage
     enum OrderDetailOutputMessage: OutputMessage {
         case updateOrderDetail(orderDetailInfo: OrderDetailInfo)
-    }
-    
-    func bindViewModel(_ viewModel: OrderDetailViewModel) {
-        viewModel.outputSubject
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: self.handleResult)
-            .store(in: &self.cancellables)
-    }
-    
-    func handleResult(_ result: Result<O, Error>) {
-        result.fold {
-            self.viewInteractor
-                .handleMessage(self.convertToInteraction(from: $0))
-        } failure: { error in
-            print(error)
-        }
     }
 }
 
@@ -74,6 +87,8 @@ extension OrderDetailViewController: ViewContollerInteractable {
     enum OrderDetailInteractionMessage: InteractionMessage {
         case updateDetailView(orderDetailInfo: OrderDetailInfo,
                               vc: OrderDetailViewController)
+        case drawRoute(locations: [CLLocation],
+                       vc: OrderDetailViewController)
     }
     
     func convertToInteraction(from outputMessage: OrderDetailOutputMessage)

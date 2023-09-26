@@ -12,6 +12,7 @@ class OrderDetailReceiptCell: UITableViewCell {
     @IBOutlet private weak var orderPriceTitleLabel: UILabel!
     @IBOutlet private weak var orderPriceLabel: UILabel!
     
+    @IBOutlet private weak var orderItemListBGView: UIView!
     @IBOutlet private weak var orderItemListView: UIStackView!
     
     static let cellIdentifier = "OrderDetailReceiptCell"
@@ -19,6 +20,11 @@ class OrderDetailReceiptCell: UITableViewCell {
 
 extension OrderDetailReceiptCell {
     func updateUI(with dealInfo: OrderDetailInfo) {
+        self.orderItemListBGView.layer.borderColor = UIColor(white: 0.824, alpha: 1.0).cgColor
+        self.orderItemListBGView.layer.borderWidth = 1.0
+        self.orderItemListBGView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        self.orderItemListBGView.layer.cornerRadius = 10.0
+        
         self.orderIdLabel.text = "\(dealInfo.id)"
         self.orderPriceTitleLabel.text = "금액"
         self.orderPriceLabel.text = dealInfo.priceLabelText

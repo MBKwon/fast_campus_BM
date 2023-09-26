@@ -22,6 +22,7 @@ class OrderListViewInteractor {
         let orderListDelegate: OrderListDelegate
     }
     
+    private var timer: Timer?
     private var selectedIndex: Int = 0
     private(set) var orderListDelegate: [OrderListInfo] = []
     var currentOrderListDelegate: OrderListDelegate? {
@@ -39,12 +40,49 @@ extension OrderListViewInteractor: ViewInteractorConfigurable {
                 .updateMenuView(categoryView)
                 .currentOrderListDelegate?
                 .update(viewController: vc)
-            
+            self.startUpdatingTimeSesitiveUI()
+
         case .selectIndex(let index, let vc):
             self.selectOrderList(index: index)
                 .currentOrderListDelegate?
                 .update(viewController: vc)
+
+        case .suspendTimer:
+            self.stopUpdatingTimeSesitiveUI()
+        case .resumeTimer:
+            self.startUpdatingTimeSesitiveUI()
         }
+    }
+}
+
+extension OrderListViewInteractor {
+    private func updateTimeSensitiveUI(_ timer: Timer) {
+        guard self.timer == timer else { return }
+
+        guard let listView = self.currentOrderListDelegate?.viewController?.orderListView,
+              let visibleIndesPaths = listView.indexPathsForVisibleRows else {
+            self.stopUpdatingTimeSesitiveUI()
+            return
+        }
+
+        if visibleIndesPaths.count == 0 {
+            self.stopUpdatingTimeSesitiveUI()
+        } else {
+            listView.beginUpdates()
+            listView.reloadRows(at: visibleIndesPaths, with: .automatic)
+            listView.endUpdates()
+        }
+    }
+
+    private func startUpdatingTimeSesitiveUI() {
+        guard self.timer == nil else { return }
+        self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true,
+                                          block: self.updateTimeSensitiveUI)
+    }
+
+    private func stopUpdatingTimeSesitiveUI() {
+        self.timer?.invalidate()
+        self.timer = nil
     }
 }
 
