@@ -11,17 +11,18 @@ import UIKit
 protocol OrderListDelegate: UITableViewDataSource {
     var dataList: [OrderDetailInfo] { get }
     var viewController: OrderListViewController? { get }
-    
+    var scrollDelegate: ((UIScrollView) -> Void)? { set get }
+
     func update(viewController: OrderListViewController)
 }
 
 class OrderListViewInteractor {
-    
+
     struct OrderListInfo {
         let title: String
         let orderListDelegate: OrderListDelegate
     }
-    
+
     private var timer: Timer?
     private var selectedIndex: Int = 0
     private(set) var orderListDelegate: [OrderListInfo] = []
@@ -32,25 +33,25 @@ class OrderListViewInteractor {
 
 extension OrderListViewInteractor: ViewInteractorConfigurable {
     typealias VC = OrderListViewController
-    
+
     func handleMessage(_ interactionMessage: VC.IM) {
         switch interactionMessage {
-        case .updateOrderList(let dataList, let categoryView, let vc):
-            self.processOrderListData(dataList)
-                .updateMenuView(categoryView)
-                .currentOrderListDelegate?
-                .update(viewController: vc)
-            self.startUpdatingTimeSesitiveUI()
+            case .updateOrderList(let dataList, let categoryView, let vc):
+                self.processOrderListData(dataList, on: vc)
+                    .updateMenuView(categoryView)
+                    .currentOrderListDelegate?
+                    .update(viewController: vc)
+                self.startUpdatingTimeSesitiveUI()
 
-        case .selectIndex(let index, let vc):
-            self.selectOrderList(index: index)
-                .currentOrderListDelegate?
-                .update(viewController: vc)
+            case .selectIndex(let index, let vc):
+                self.selectOrderList(index: index)
+                    .currentOrderListDelegate?
+                    .update(viewController: vc)
 
-        case .suspendTimer:
-            self.stopUpdatingTimeSesitiveUI()
-        case .resumeTimer:
-            self.startUpdatingTimeSesitiveUI()
+            case .suspendTimer:
+                self.stopUpdatingTimeSesitiveUI()
+            case .resumeTimer:
+                self.startUpdatingTimeSesitiveUI()
         }
     }
 }
@@ -92,18 +93,18 @@ extension OrderListViewInteractor {
         self.selectedIndex = index
         return self
     }
-    
+
     @discardableResult
     private func updateMenuView(_ stackView: FCStackView) -> Self {
         self.orderListDelegate.enumerated().forEach { sequenceElement in
             stackView.addButton(title: sequenceElement.element.title, itemTag: sequenceElement.offset)
         }
-        
+
         return self
     }
-    
+
     @discardableResult
-    private func processOrderListData(_ dataList: [OrderDetailInfo]) -> Self {
+    private func processOrderListData(_ dataList: [OrderDetailInfo], on viewController: VC) -> Self {
         let pendingOrderListDelegate = PendingOrderListDelegate(with: dataList
             .filter { $0.status == .pending })
         let deliveringOrderListDelegate = InProgressOrderListDelegate(with: dataList
@@ -119,7 +120,18 @@ extension OrderListViewInteractor {
             OrderListInfo(title: "완료 \(completedOrderListDelegate.dataList.count)",
                           orderListDelegate: completedOrderListDelegate)
         ]
-        
+
+        self.orderListDelegate.forEach { listInfo in
+            listInfo.orderListDelegate.scrollDelegate = { (scrollView) in
+                let offsetY = scrollView.contentOffset.y
+                let maxHeight = 57.0
+                let minHeight = 30.0
+
+                let viewHeight = max(maxHeight - offsetY / 10, minHeight)
+                viewController.orderCategoryViewHeight.constant = viewHeight
+            }
+        }
+
         return self
     }
 }

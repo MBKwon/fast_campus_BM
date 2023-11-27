@@ -24,6 +24,13 @@
                                     <constraint firstAttribute="height" constant="57" id="BC1-2I-den"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wuc-Ed-Kqr">
+                                <rect key="frame" x="0.0" y="159" width="393" height="1"/>
+                                <color key="backgroundColor" systemColor="secondaryLabelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="1jx-6p-Gm1"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JNs-pT-XBp">
                                 <rect key="frame" x="0.0" y="160" width="393" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -45,7 +52,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EN-M4-URr">
-                                                    <rect key="frame" x="305" y="46" width="42" height="19"/>
+                                                    <rect key="frame" x="305.66666666666669" y="46" width="41.333333333333314" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="Wv3-zn-TJ2"/>
                                                     </constraints>
@@ -81,7 +88,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iW4-pi-bKp">
-                                                    <rect key="frame" x="282" y="149" width="38" height="17"/>
+                                                    <rect key="frame" x="282.33333333333331" y="149" width="37.666666666666686" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="KfI-QY-FIf"/>
                                                     </constraints>
@@ -145,9 +152,12 @@
                         <constraints>
                             <constraint firstItem="cUR-Ug-Vfd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="34a-3B-cQS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JNs-pT-XBp" secondAttribute="trailing" id="6kH-Oh-NCh"/>
+                            <constraint firstItem="wuc-Ed-Kqr" firstAttribute="bottom" secondItem="cUR-Ug-Vfd" secondAttribute="bottom" id="KIJ-u6-psC"/>
+                            <constraint firstItem="wuc-Ed-Kqr" firstAttribute="trailing" secondItem="cUR-Ug-Vfd" secondAttribute="trailing" id="SuZ-gz-Fzu"/>
                             <constraint firstItem="cUR-Ug-Vfd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a28-ct-343"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JNs-pT-XBp" secondAttribute="bottom" id="hq2-pU-YWw"/>
                             <constraint firstItem="JNs-pT-XBp" firstAttribute="top" secondItem="cUR-Ug-Vfd" secondAttribute="bottom" id="kIu-sr-G2B"/>
+                            <constraint firstItem="wuc-Ed-Kqr" firstAttribute="leading" secondItem="cUR-Ug-Vfd" secondAttribute="leading" id="pwF-2y-27K"/>
                             <constraint firstItem="JNs-pT-XBp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rbg-7v-Nsh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cUR-Ug-Vfd" secondAttribute="trailing" id="yAV-y4-aJz"/>
                         </constraints>
@@ -155,6 +165,7 @@
                     <navigationItem key="navigationItem" id="MYs-tH-4Gh"/>
                     <connections>
                         <outlet property="orderCategoryView" destination="cUR-Ug-Vfd" id="81i-nv-VLS"/>
+                        <outlet property="orderCategoryViewHeight" destination="BC1-2I-den" id="WPq-EF-7yn"/>
                         <outlet property="orderListView" destination="JNs-pT-XBp" id="N0e-bJ-RSP"/>
                         <segue destination="ePa-sK-N2D" kind="show" identifier="goToOrderDetail" id="qvR-3Z-XhG"/>
                     </connections>
@@ -1027,6 +1038,9 @@
         <image name="navigation_button" width="48" height="48"/>
         <image name="order_detail_button_arrow" width="25" height="24"/>
         <image name="order_detail_cell_arrow" width="24" height="24"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -11,7 +11,8 @@ class PendingOrderListDelegate: NSObject, OrderListDelegate {
     
     var dataList: [OrderDetailInfo]
     private(set) var viewController: OrderListViewController?
-    
+    var scrollDelegate: ((UIScrollView) -> Void)?
+
     private override init() {
         self.dataList = []
         super.init()
@@ -60,5 +61,9 @@ extension PendingOrderListDelegate: UITableViewDelegate {
         viewController.performSegue(withIdentifier:
                                         OrderListViewController.SegueIdentifier.goToOrderDetail,
                                     sender: dataInfo.id)
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.scrollDelegate?(scrollView)
     }
 }

@@ -12,7 +12,9 @@ import UIKit
 final class OrderListViewController: UIViewController {
     
     @IBOutlet private weak var orderCategoryView: FCStackView!
+
     @IBOutlet weak var orderListView: UITableView!
+    @IBOutlet weak var orderCategoryViewHeight: NSLayoutConstraint!
 
     private(set) var microBean: MicroBean<OrderListViewController, OrderListViewModel, OrderListViewInteractor>?
     private(set) var cancellables = Set<AnyCancellable>()
