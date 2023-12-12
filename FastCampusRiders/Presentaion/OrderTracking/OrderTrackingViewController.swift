@@ -27,7 +27,7 @@ class OrderTrackingViewController: UIViewController {
     @IBOutlet private weak var indicatorCompletionConstraint: NSLayoutConstraint!
 
     @IBOutlet private weak var progressStartConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var progrvvessDelivaryConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var progressDelivaryConstraint: NSLayoutConstraint!
     @IBOutlet private weak var progressCompletionConstraint: NSLayoutConstraint!
 
 }
