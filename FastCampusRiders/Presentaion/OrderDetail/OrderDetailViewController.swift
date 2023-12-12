@@ -23,6 +23,23 @@ class OrderDetailViewController: UITableViewController {
         static let completeDelivery = "completeDelivery"
         static let trackOrder = "trackOrder"
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.microBean = MicroBean(withVC: self,
+                                   viewModel: OrderDetailViewModel(),
+                                   viewInteractor: OrderDetailViewInteractor())
+
+        if let orderID = self.orderID {
+            self.microBean?.handle(inputMessage: .getOrderDetail(orderID: orderID))
+        } else {
+            assertionFailure("orderID is nil")
+        }
+    }
+
+    func set(orderID: String) {
+        self.orderID = orderID
+    }
 }
 
 extension OrderDetailViewController: ViewControllerConfigurable {

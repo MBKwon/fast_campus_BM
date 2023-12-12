@@ -13,3 +13,18 @@ class OrderDetailTitleCell: UITableViewCell {
     
     static let cellIdentifier = "OrderDetailTitleCell"
 }
+
+extension OrderDetailTitleCell {
+    func updateUI(with text: String, isFolded: Bool,
+                  color: UIColor = .black) {
+        self.titleLabel.text = text
+        self.titleLabel.textColor = color
+
+        if isFolded {
+            self.arrowImageView.image = UIImage(named: "arrow_folded")
+        } else {
+            self.arrowImageView.image = UIImage(named: "arrow_unfolded")
+        }
+    }
+}
+

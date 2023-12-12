@@ -16,3 +16,27 @@ class OrderDetailContactCell: UITableViewCell {
     
     static let cellIdentifier = "OrderDetailContactCell"
 }
+
+extension OrderDetailContactCell {
+    func updateUI(with locationInfo: LocationDetailInfo, color: UIColor = .black) {
+        self.titleLabel.text = locationInfo.locationName
+        self.addressLabel.text = locationInfo.address
+        self.contactButton
+            .setTitle(locationInfo.phoneNumber, state: .normal)
+            .setTitleColor(color, state: .normal)
+            .addAction {
+                if let callURL = URL(string: "tel:\(locationInfo.phoneNumber)") {
+                    UIApplication.shared.open(callURL)
+                }
+            }
+
+        self.contactButton.layer.borderWidth = 1
+        self.contactButton.layer.borderColor = color.cgColor
+        self.contactButton.layer.cornerRadius = 5
+
+        let callIconImage = UIImage(named: "icon_call_button")?.withRenderingMode(.alwaysTemplate)
+        self.contactButton.setImage(callIconImage, for: .normal)
+        self.contactButton.tintColor = color
+    }
+}
+

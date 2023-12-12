@@ -46,6 +46,15 @@ final class OrderListViewController: UIViewController {
         self.microBean?.handle(interactionMessage: .suspendTimer)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? OrderDetailViewController,
+           let orderID = sender as? String {
+            vc.set(orderID: orderID)
+        } else {
+            assertionFailure("undefined order ID")
+        }
+    }
+
     func bindCategoryEvent() {
         self.orderCategoryView
             .selectedItemSubject

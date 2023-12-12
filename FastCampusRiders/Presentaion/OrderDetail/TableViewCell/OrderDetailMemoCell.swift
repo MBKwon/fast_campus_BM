@@ -12,3 +12,9 @@ class OrderDetailMemoCell: UITableViewCell {
     
     static let cellIdentifier = "OrderDetailMemoCell"
 }
+
+extension OrderDetailMemoCell {
+    func updateUI(with memo: String) {
+        self.memoLabel.text = memo
+    }
+}

@@ -149,19 +149,19 @@ extension OrderDetailViewDelegate: UITableViewDataSource {
                                                          for: indexPath)
 
                 if let cell = cell as? OrderDetailDescriptionCell {
-//                    cell.updateUI(with: detailInfo)
-//                    cell.bindActionButton { dealInfo in
-//                        switch dealInfo.status {
-//                            case .pending:
-//                                print("배달로 변경")
-//                            case .delivering:
-//                                let completionSegue = OrderDetailViewController.SegueIdentifier.completeDelivery
-//                                self.viewController.performSegue(withIdentifier: completionSegue,
-//                                                                 sender: dealInfo.id)
-//                            case .completed:
-//                                print("이미 완료")
-//                        }
-//                    }
+                    cell.updateUI(with: detailInfo)
+                    cell.bindActionButton { dealInfo in
+                        switch dealInfo.status {
+                            case .pending:
+                                print("배달로 변경")
+                            case .delivering:
+                                let completionSegue = OrderDetailViewController.SegueIdentifier.completeDelivery
+                                self.viewController.performSegue(withIdentifier: completionSegue,
+                                                                 sender: dealInfo.id)
+                            case .completed:
+                                print("이미 완료")
+                        }
+                    }
                 }
                 return cell
 
@@ -171,7 +171,7 @@ extension OrderDetailViewDelegate: UITableViewDataSource {
                                                              for: indexPath)
 
                     if let cell = cell as? OrderDetailTitleCell {
-//                        cell.updateUI(with: title, isFolded: isFolded, color: textColor)
+                        cell.updateUI(with: title, isFolded: isFolded, color: textColor)
                     }
                     return cell
                 } else {
@@ -181,7 +181,7 @@ extension OrderDetailViewDelegate: UITableViewDataSource {
                                                                      for: indexPath)
 
                             if let cell = cell as? OrderDetailMemoCell {
-//                                cell.updateUI(with: memo)
+                                cell.updateUI(with: memo)
                             }
                             return cell
                         case .storeInfo(let locationInfo, let tintColor),
@@ -190,7 +190,7 @@ extension OrderDetailViewDelegate: UITableViewDataSource {
                                                                      for: indexPath)
 
                             if let cell = cell as? OrderDetailContactCell {
-//                                cell.updateUI(with: locationInfo, color: tintColor)
+                                cell.updateUI(with: locationInfo, color: tintColor)
                             }
                             return cell
                         case .receiptInfo(let detailInfo):
@@ -198,7 +198,7 @@ extension OrderDetailViewDelegate: UITableViewDataSource {
                                                                      for: indexPath)
 
                             if let cell = cell as? OrderDetailReceiptCell {
-//                                cell.updateUI(with: detailInfo)
+                                cell.updateUI(with: detailInfo)
                             }
                             return cell
                     }
