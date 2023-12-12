@@ -15,8 +15,47 @@ final class OrderListViewController: UIViewController {
 
     @IBOutlet weak var orderListView: UITableView!
     @IBOutlet weak var orderCategoryViewHeight: NSLayoutConstraint!
+    
+    private(set) var cancellables = Set<AnyCancellable>()
+    private(set) var microBean: MicroBean<OrderListViewController,
+                                          OrderListViewModel,
+                                          OrderListViewInteractor>?
 
-    private(set) var microBean: MicroBean<OrderListViewController, OrderListViewModel, OrderListViewInteractor>?
+    enum SegueIdentifier {
+        static let goToOrderDetail = "goToOrderDetail"
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.microBean = MicroBean(withVC: self,
+                                   viewModel: OrderListViewModel(),
+                                   viewInteractor: OrderListViewInteractor())
+
+        self.bindCategoryEvent()
+        self.microBean?.handle(inputMessage: .getOrderList)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.microBean?.handle(interactionMessage: .resumeTimer)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.microBean?.handle(interactionMessage: .suspendTimer)
+    }
+
+    func bindCategoryEvent() {
+        self.orderCategoryView
+            .selectedItemSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] selectedIndex in
+                guard let self = self else { return }
+                self.microBean?
+                    .handle(interactionMessage: .selectIndex(index: selectedIndex, vc: self))
+            }.store(in: &self.cancellables)
+    }
 }
 
 extension OrderListViewController: ViewControllerConfigurable {

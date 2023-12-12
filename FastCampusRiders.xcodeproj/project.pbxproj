@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C30369472B2870000079B372 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369462B2870000079B372 /* OrderListViewModel.swift */; };
 		C30369492B2870B90079B372 /* OrderListViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369482B2870B90079B372 /* OrderListViewInteractor.swift */; };
+		C303694E2B2876A90079B372 /* PendingOrderListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303694D2B2876A90079B372 /* PendingOrderListDelegate.swift */; };
+		C30369502B2877EB0079B372 /* InProgressOrderListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C303694F2B2877EB0079B372 /* InProgressOrderListDelegate.swift */; };
+		C30369522B28785A0079B372 /* CompletedOrderListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369512B28785A0079B372 /* CompletedOrderListDelegate.swift */; };
 		C355C4972AD10837002F0705 /* FCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355C4962AD10837002F0705 /* FCConstants.swift */; };
 		FE10192C2AB13F270091C91C /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10192B2AB13F270091C91C /* APIController.swift */; };
 		FE1019B42AB2D2940091C91C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B32AB2D2940091C91C /* ArrayExtension.swift */; };
@@ -45,6 +48,9 @@
 /* Begin PBXFileReference section */
 		C30369462B2870000079B372 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderListViewModel.swift; path = OrderList/OrderListViewModel.swift; sourceTree = "<group>"; };
 		C30369482B2870B90079B372 /* OrderListViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderListViewInteractor.swift; path = OrderList/OrderListViewInteractor.swift; sourceTree = "<group>"; };
+		C303694D2B2876A90079B372 /* PendingOrderListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PendingOrderListDelegate.swift; path = FastCampusRiders/Presentaion/OrderList/Delegate/PendingOrderListDelegate.swift; sourceTree = SOURCE_ROOT; };
+		C303694F2B2877EB0079B372 /* InProgressOrderListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InProgressOrderListDelegate.swift; path = FastCampusRiders/Presentaion/OrderList/Delegate/InProgressOrderListDelegate.swift; sourceTree = SOURCE_ROOT; };
+		C30369512B28785A0079B372 /* CompletedOrderListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompletedOrderListDelegate.swift; path = FastCampusRiders/Presentaion/OrderList/Delegate/CompletedOrderListDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C355C4962AD10837002F0705 /* FCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCConstants.swift; sourceTree = "<group>"; };
 		FE10192B2AB13F270091C91C /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		FE1019B32AB2D2940091C91C /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -91,6 +97,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C303694B2B28768B0079B372 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				C303694D2B2876A90079B372 /* PendingOrderListDelegate.swift */,
+				C303694F2B2877EB0079B372 /* InProgressOrderListDelegate.swift */,
+				C30369512B28785A0079B372 /* CompletedOrderListDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		FE1019752AB144250091C91C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +209,7 @@
 		FE19AF242AAAC42100FE09A8 /* OderList */ = {
 			isa = PBXGroup;
 			children = (
+				C303694B2B28768B0079B372 /* Delegate */,
 				FED5A47D2AC2BEA80050F24D /* TableViewCell */,
 				FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */,
 				C30369482B2870B90079B372 /* OrderListViewInteractor.swift */,
@@ -343,13 +360,16 @@
 				FE19AF1C2AA9578E00FE09A8 /* LocationManager.swift in Sources */,
 				FE19AEF82AA6C0EE00FE09A8 /* AppDelegate.swift in Sources */,
 				FE1019CB2AB3FB370091C91C /* OrderDetailViewController.swift in Sources */,
+				C30369522B28785A0079B372 /* CompletedOrderListDelegate.swift in Sources */,
 				FE19AEFA2AA6C0EE00FE09A8 /* SceneDelegate.swift in Sources */,
 				FE19AF2B2AAACD7300FE09A8 /* ButtonExtension.swift in Sources */,
 				FE10192C2AB13F270091C91C /* APIController.swift in Sources */,
 				FE1019C72AB3F63E0091C91C /* ViewExtension.swift in Sources */,
+				C30369502B2877EB0079B372 /* InProgressOrderListDelegate.swift in Sources */,
 				FEE527812AC91DA400BC682F /* OrderTrackingViewController.swift in Sources */,
 				FE19AF202AAABD8100FE09A8 /* OrderDetailInfo.swift in Sources */,
 				FE9AD80F2ABD4E5300535B47 /* OrderDetailMapViewCell.swift in Sources */,
+				C303694E2B2876A90079B372 /* PendingOrderListDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

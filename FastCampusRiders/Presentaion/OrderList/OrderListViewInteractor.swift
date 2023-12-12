@@ -8,6 +8,14 @@
 import MBAkit
 import UIKit
 
+protocol OrderListDelegate: UITableViewDataSource {
+    var dataList: [OrderDetailInfo] { get }
+    var viewController: OrderListViewController? { get }
+    var scrollDelegate: ((UIScrollView) -> Void)? { set get }
+
+    func update(viewController: OrderListViewController)
+}
+
 class OrderListViewInteractor {
 
     struct OrderListInfo {
@@ -33,7 +41,7 @@ extension OrderListViewInteractor: ViewInteractorConfigurable {
                     .updateMenuView(categoryView)
                     .currentOrderListDelegate?
                     .update(viewController: vc)
-                self.startUpdatingTimeSesitiveUI()
+                self.stopUpdatingtimeSensitiveUI()
 
             case .selectIndex(let index, let vc):
                 self.selectOrderList(index: index)
@@ -41,9 +49,94 @@ extension OrderListViewInteractor: ViewInteractorConfigurable {
                     .update(viewController: vc)
 
             case .suspendTimer:
-                self.stopUpdatingTimeSesitiveUI()
+                self.startUpdatingTimeSensitiveUI()
             case .resumeTimer:
-                self.startUpdatingTimeSesitiveUI()
+                self.stopUpdatingtimeSensitiveUI()
         }
+    }
+}
+
+extension OrderListViewInteractor {
+
+    @discardableResult
+    private func selectOrderList(index: Int) -> Self {
+        self.selectedIndex = index
+        return self
+    }
+
+    @discardableResult
+    private func updateMenuView(_ stackView: FCStackView) -> Self {
+        self.orderListDelegate.enumerated().forEach { sequenceElement in
+            stackView.addButton(title: sequenceElement.element.title,
+                                itemTag: sequenceElement.offset)
+        }
+        return self
+    }
+}
+
+extension OrderListViewInteractor {
+    private func startUpdatingTimeSensitiveUI() {
+        guard self.timer == nil else { return }
+        self.timer = Timer.scheduledTimer(withTimeInterval: 5.0,
+                                          repeats: true, 
+                                          block: updateTimeSensitiveUI(_:))
+    }
+
+    private func stopUpdatingtimeSensitiveUI() {
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+
+    private func updateTimeSensitiveUI(_ timer: Timer) {
+        guard self.timer == timer else { return }
+
+        guard let listView = self.currentOrderListDelegate?.viewController?.orderListView,
+              let visibleIndexPaths = listView.indexPathsForVisibleRows else {
+            self.stopUpdatingtimeSensitiveUI()
+            return
+        }
+
+        if visibleIndexPaths.count == 0 {
+            self.stopUpdatingtimeSensitiveUI()
+        } else {
+            listView.beginUpdates()
+            listView.reloadRows(at: visibleIndexPaths, with: .automatic)
+            listView.endUpdates()
+        }
+    }
+}
+
+extension OrderListViewInteractor {
+
+    @discardableResult
+    private func processOrderListData(_ dataList: [OrderDetailInfo], on viewController: VC) -> Self {
+        let pendingOrderListDelegate = PendingOrderListDelegate(with: dataList
+            .filter { $0.status == .pending })
+        let deliveringOrderListDelegate = InProgressOrderListDelegate(with: dataList
+            .filter { $0.status == .delivering })
+        let completedOrderListDelegate = CompletedOrderListDelegate(with: dataList
+            .filter { $0.status == .completed })
+
+        self.orderListDelegate = [
+            OrderListInfo(title: "대기중 \(pendingOrderListDelegate.dataList.count)",
+                          orderListDelegate: pendingOrderListDelegate),
+            OrderListInfo(title: "진행 \(deliveringOrderListDelegate.dataList.count)",
+                          orderListDelegate: deliveringOrderListDelegate),
+            OrderListInfo(title: "완료 \(completedOrderListDelegate.dataList.count)",
+                          orderListDelegate: completedOrderListDelegate)
+        ]
+
+        self.orderListDelegate.forEach { listInfo in
+            listInfo.orderListDelegate.scrollDelegate = { (scrollView) in
+                let offsetY = scrollView.contentOffset.y
+                let maxHeight = 57.0
+                let minHeight = 30.0
+
+                let viewHeight = max(maxHeight - offsetY / 10, minHeight)
+                viewController.orderCategoryViewHeight.constant = viewHeight
+            }
+        }
+
+        return self
     }
 }
