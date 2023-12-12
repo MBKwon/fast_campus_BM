@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C30369472B2870000079B372 /* OrderListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369462B2870000079B372 /* OrderListViewModel.swift */; };
+		C30369492B2870B90079B372 /* OrderListViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369482B2870B90079B372 /* OrderListViewInteractor.swift */; };
 		C355C4972AD10837002F0705 /* FCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355C4962AD10837002F0705 /* FCConstants.swift */; };
 		FE10192C2AB13F270091C91C /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10192B2AB13F270091C91C /* APIController.swift */; };
 		FE1019B42AB2D2940091C91C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B32AB2D2940091C91C /* ArrayExtension.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C30369462B2870000079B372 /* OrderListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderListViewModel.swift; path = OrderList/OrderListViewModel.swift; sourceTree = "<group>"; };
+		C30369482B2870B90079B372 /* OrderListViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderListViewInteractor.swift; path = OrderList/OrderListViewInteractor.swift; sourceTree = "<group>"; };
 		C355C4962AD10837002F0705 /* FCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCConstants.swift; sourceTree = "<group>"; };
 		FE10192B2AB13F270091C91C /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		FE1019B32AB2D2940091C91C /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 			children = (
 				FED5A47D2AC2BEA80050F24D /* TableViewCell */,
 				FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */,
+				C30369482B2870B90079B372 /* OrderListViewInteractor.swift */,
+				C30369462B2870000079B372 /* OrderListViewModel.swift */,
 			);
 			name = OderList;
 			sourceTree = "<group>";
@@ -325,7 +331,9 @@
 				FED5A4712AC25FD20050F24D /* OrderDetailTitleCell.swift in Sources */,
 				FED5A47F2AC2BEA80050F24D /* OrderListTableViewCell.swift in Sources */,
 				FE9AD8102ABD4E5300535B47 /* OrderDetailDescriptionCell.swift in Sources */,
+				C30369492B2870B90079B372 /* OrderListViewInteractor.swift in Sources */,
 				FED5A4792AC282A00050F24D /* OrderDetailReceiptCell.swift in Sources */,
+				C30369472B2870000079B372 /* OrderListViewModel.swift in Sources */,
 				FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */,
 				FE19AF1A2AA9578E00FE09A8 /* DataManager.swift in Sources */,
 				FE1019C92AB3F8190091C91C /* IntExtension.swift in Sources */,
