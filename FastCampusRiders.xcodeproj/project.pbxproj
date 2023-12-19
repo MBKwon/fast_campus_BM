@@ -16,6 +16,11 @@
 		C30369562B28808C0079B372 /* OrderDetailViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369552B28808C0079B372 /* OrderDetailViewInteractor.swift */; };
 		C30369592B2882700079B372 /* OrderDetailViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369582B2882700079B372 /* OrderDetailViewDelegate.swift */; };
 		C355C4972AD10837002F0705 /* FCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355C4962AD10837002F0705 /* FCConstants.swift */; };
+		C3F439522B31AA6D004B6B69 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439512B31AA6D004B6B69 /* MapManager.swift */; };
+		C3F439542B31ABE0004B6B69 /* MapAppleDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439532B31ABE0004B6B69 /* MapAppleDirections.swift */; };
+		C3F439562B31AD32004B6B69 /* MapGoogleDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439552B31AD32004B6B69 /* MapGoogleDirections.swift */; };
+		C3F439582B31AD92004B6B69 /* MapKakaoDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439572B31AD92004B6B69 /* MapKakaoDirections.swift */; };
+		C3F4395A2B31ADE3004B6B69 /* MapNaverDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439592B31ADE3004B6B69 /* MapNaverDirections.swift */; };
 		FE10192C2AB13F270091C91C /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10192B2AB13F270091C91C /* APIController.swift */; };
 		FE1019B42AB2D2940091C91C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B32AB2D2940091C91C /* ArrayExtension.swift */; };
 		FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */; };
@@ -58,6 +63,11 @@
 		C30369552B28808C0079B372 /* OrderDetailViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailViewInteractor.swift; path = OrderDetail/OrderDetailViewInteractor.swift; sourceTree = "<group>"; };
 		C30369582B2882700079B372 /* OrderDetailViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailViewDelegate.swift; path = OrderDetail/Delegate/OrderDetailViewDelegate.swift; sourceTree = "<group>"; };
 		C355C4962AD10837002F0705 /* FCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCConstants.swift; sourceTree = "<group>"; };
+		C3F439512B31AA6D004B6B69 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapManager.swift; path = OrderDetail/Directions/MapManager.swift; sourceTree = "<group>"; };
+		C3F439532B31ABE0004B6B69 /* MapAppleDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapAppleDirections.swift; path = OrderDetail/Directions/MapAppleDirections.swift; sourceTree = "<group>"; };
+		C3F439552B31AD32004B6B69 /* MapGoogleDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapGoogleDirections.swift; path = OrderDetail/Directions/MapGoogleDirections.swift; sourceTree = "<group>"; };
+		C3F439572B31AD92004B6B69 /* MapKakaoDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapKakaoDirections.swift; path = OrderDetail/Directions/MapKakaoDirections.swift; sourceTree = "<group>"; };
+		C3F439592B31ADE3004B6B69 /* MapNaverDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapNaverDirections.swift; path = OrderDetail/Directions/MapNaverDirections.swift; sourceTree = "<group>"; };
 		FE10192B2AB13F270091C91C /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		FE1019B32AB2D2940091C91C /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderListViewController.swift; path = OrderList/OrderListViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +129,18 @@
 				C30369582B2882700079B372 /* OrderDetailViewDelegate.swift */,
 			);
 			name = Delegate;
+			sourceTree = "<group>";
+		};
+		C3F439502B31AA3B004B6B69 /* Directions */ = {
+			isa = PBXGroup;
+			children = (
+				C3F439512B31AA6D004B6B69 /* MapManager.swift */,
+				C3F439532B31ABE0004B6B69 /* MapAppleDirections.swift */,
+				C3F439552B31AD32004B6B69 /* MapGoogleDirections.swift */,
+				C3F439572B31AD92004B6B69 /* MapKakaoDirections.swift */,
+				C3F439592B31ADE3004B6B69 /* MapNaverDirections.swift */,
+			);
+			name = Directions;
 			sourceTree = "<group>";
 		};
 		FE1019752AB144250091C91C /* Frameworks */ = {
@@ -235,6 +257,7 @@
 		FE19AF252AAAC43700FE09A8 /* OrderDetail */ = {
 			isa = PBXGroup;
 			children = (
+				C3F439502B31AA3B004B6B69 /* Directions */,
 				C30369572B2882580079B372 /* Delegate */,
 				FE1019EB2ABBD13B0091C91C /* TableViewCell */,
 				FE1019CA2AB3FB370091C91C /* OrderDetailViewController.swift */,
@@ -359,6 +382,7 @@
 				C30369562B28808C0079B372 /* OrderDetailViewInteractor.swift in Sources */,
 				FED5A4812AC2C5150050F24D /* OrderCompletionViewController.swift in Sources */,
 				FED5A4772AC26CF40050F24D /* OrderDetailMemoCell.swift in Sources */,
+				C3F439522B31AA6D004B6B69 /* MapManager.swift in Sources */,
 				FED5A4732AC262C30050F24D /* OrderDetailContactCell.swift in Sources */,
 				FE19AF292AAAC63000FE09A8 /* FCStackView.swift in Sources */,
 				FE9AD8142ABD67B900535B47 /* ControlExtension.swift in Sources */,
@@ -367,8 +391,10 @@
 				FED5A47F2AC2BEA80050F24D /* OrderListTableViewCell.swift in Sources */,
 				FE9AD8102ABD4E5300535B47 /* OrderDetailDescriptionCell.swift in Sources */,
 				C30369492B2870B90079B372 /* OrderListViewInteractor.swift in Sources */,
+				C3F439562B31AD32004B6B69 /* MapGoogleDirections.swift in Sources */,
 				FED5A4792AC282A00050F24D /* OrderDetailReceiptCell.swift in Sources */,
 				C30369472B2870000079B372 /* OrderListViewModel.swift in Sources */,
+				C3F439542B31ABE0004B6B69 /* MapAppleDirections.swift in Sources */,
 				FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */,
 				FE19AF1A2AA9578E00FE09A8 /* DataManager.swift in Sources */,
 				FE1019C92AB3F8190091C91C /* IntExtension.swift in Sources */,
@@ -377,11 +403,13 @@
 				FED5A4752AC263F20050F24D /* LocationDetailInfo.swift in Sources */,
 				FE19AF1C2AA9578E00FE09A8 /* LocationManager.swift in Sources */,
 				FE19AEF82AA6C0EE00FE09A8 /* AppDelegate.swift in Sources */,
+				C3F4395A2B31ADE3004B6B69 /* MapNaverDirections.swift in Sources */,
 				FE1019CB2AB3FB370091C91C /* OrderDetailViewController.swift in Sources */,
 				C30369522B28785A0079B372 /* CompletedOrderListDelegate.swift in Sources */,
 				FE19AEFA2AA6C0EE00FE09A8 /* SceneDelegate.swift in Sources */,
 				FE19AF2B2AAACD7300FE09A8 /* ButtonExtension.swift in Sources */,
 				FE10192C2AB13F270091C91C /* APIController.swift in Sources */,
+				C3F439582B31AD92004B6B69 /* MapKakaoDirections.swift in Sources */,
 				FE1019C72AB3F63E0091C91C /* ViewExtension.swift in Sources */,
 				C30369502B2877EB0079B372 /* InProgressOrderListDelegate.swift in Sources */,
 				C30369592B2882700079B372 /* OrderDetailViewDelegate.swift in Sources */,

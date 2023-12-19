@@ -133,14 +133,14 @@ extension OrderDetailViewDelegate: UITableViewDataSource {
 
                 if let cell = cell as? OrderDetailMapViewCell {
                     if let routes = routes {
-                        //cell.drawRoute(routeData: routes)
+                        cell.drawRoute(routeData: routes)
                     }
-//                    cell.bindNavigationAction(self.presentDirectionActionSheet(with: detailInfo))
-//                    cell.bindRouteAction {
-//                        let trackOrderSegue = OrderDetailViewController.SegueIdentifier.trackOrder
-//                        self.viewController.performSegue(withIdentifier: trackOrderSegue,
-//                                                         sender: detailInfo)
-//                    }
+                    cell.bindNavigationAction(self.presentDirectionActionSheet(with: detailInfo))
+                    cell.bindRouteAction {
+                        let trackOrderSegue = OrderDetailViewController.SegueIdentifier.trackOrder
+                        self.viewController.performSegue(withIdentifier: trackOrderSegue,
+                                                         sender: detailInfo)
+                    }
                 }
                 return cell
 
@@ -239,6 +239,50 @@ extension OrderDetailViewDelegate: UITableViewDelegate {
                 } else {
                     do { }
                 }
+        }
+    }
+}
+
+extension OrderDetailViewDelegate {
+    private func presentDirectionActionSheet(with dealInfo: OrderDetailInfo) -> () -> Void {
+        return {
+            let mapAppsList = MapManager.getMapApps()
+            if mapAppsList.count == 0 {
+                let actionSheet = UIAlertController(title: "Direction",
+                                                    message: "No app you can use",
+                                                    preferredStyle: .actionSheet)
+
+                actionSheet.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { _ in
+                    actionSheet.dismiss(animated: true)
+                }))
+
+                self.viewController.present(actionSheet, animated: true)
+            } else {
+                let actionSheet = UIAlertController(title: "Direction",
+                                                    message: "choose a map you'd like to use",
+                                                    preferredStyle: .actionSheet)
+
+                mapAppsList.compactMap { mapItem in
+                    UIAlertAction(title: mapItem.appName, style: .default) { _ in
+                        switch dealInfo.status {
+                            case .pending:
+                                mapItem.openAppToGetDirections(with: dealInfo.storeInfo.locationCoordinate,
+                                                               name: dealInfo.storeInfo.locationName)
+                            case .delivering:
+                                mapItem.openAppToGetDirections(with: dealInfo.destinationInfo.locationCoordinate,
+                                                               name: dealInfo.destinationInfo.locationName)
+                            case .completed:
+                                assertionFailure("The order is completed")
+                        }
+                    }
+                }.forEach(actionSheet.addAction(_:))
+
+                actionSheet.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { _ in
+                    actionSheet.dismiss(animated: true)
+                }))
+
+                self.viewController.present(actionSheet, animated: true)
+            }
         }
     }
 }

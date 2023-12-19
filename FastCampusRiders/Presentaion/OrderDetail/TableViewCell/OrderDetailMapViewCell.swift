@@ -37,3 +37,58 @@ class OrderDetailMapViewCell: UITableViewCell {
         return locationManager
     }()
 }
+
+extension OrderDetailMapViewCell {
+    func bindNavigationAction(_ action: @escaping () -> Void) {
+        self.navigationButton.addAction(action)
+    }
+    
+    func bindRouteAction(_ action: @escaping () -> Void) {
+        self.routeButton.addAction(action)
+    }
+
+    @IBAction private func touchCurrentLocationButton() {
+        self.locationManager.updateCurrentLocation()
+    }
+}
+
+extension OrderDetailMapViewCell: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKGradientPolylineRenderer(overlay: overlay)
+
+        renderer.setColors([
+            UIColor(red: 0.02, green: 0.91, blue: 0.05, alpha: 1.0),
+            UIColor(red: 1.0, green: 0.48, blue: 0.0, alpha: 1.0),
+            UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0),
+        ], locations: [])
+        renderer.lineCap = .round
+        renderer.lineWidth = 3.0
+
+        return renderer
+    }
+}
+
+extension OrderDetailMapViewCell {
+    func drawRoute(routeData: [CLLocation]) {
+        if routeData.count == 0 {
+            print("No Coordinates to draw")
+            return
+        }
+
+        let coodinates = routeData.map(\.coordinate)
+
+        DispatchQueue.main.async {
+            if let exOverlay = self.routeOverlay {
+                self.mapView.removeOverlay(exOverlay)
+            }
+
+            let routeOverlay = MKPolyline(coordinates: coodinates, count: coodinates.count)
+            self.mapView.addOverlay(routeOverlay)
+            self.mapView.setVisibleMapRect(routeOverlay.boundingMapRect,
+                                           edgePadding: .zero,
+                                           animated: true)
+            self.routeOverlay = routeOverlay
+        }
+    }
+}
+
