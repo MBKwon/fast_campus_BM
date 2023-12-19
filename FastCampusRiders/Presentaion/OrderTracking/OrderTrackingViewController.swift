@@ -30,4 +30,91 @@ class OrderTrackingViewController: UIViewController {
     @IBOutlet private weak var progressDelivaryConstraint: NSLayoutConstraint!
     @IBOutlet private weak var progressCompletionConstraint: NSLayoutConstraint!
 
+    private var defaultColor: UIColor {
+        return UIColor(red: 0.824, green: 0.824, blue: 0.824, alpha: 1)
+    }
+    private var highlightedColor: UIColor {
+        return UIColor(red: 0.157, green: 0.761, blue: 0.737, alpha: 1)
+    }
+
+    private(set) var orderDetailInfo: OrderDetailInfo?
+
+    override func viewDidLoad() {
+        self.startPoint.layer.cornerRadius = 4.5
+        self.midPoint.layer.cornerRadius = 4.5
+        self.endPoint.layer.cornerRadius = 4.5
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard let orderDetailInfo = self.orderDetailInfo else {
+            assertionFailure("orderDetailInfo is nil")
+            return
+        }
+
+        let animator = UIViewPropertyAnimator(duration: 1.4, curve: .easeOut)
+        animator.addAnimations {
+            switch orderDetailInfo.status {
+                case .pending:
+                    self.setStartStatus()
+                case .delivering:
+                    self.setDelivaryStatus()
+                case .completed:
+                    self.setCompleteStatus()
+            }
+            self.view.layoutIfNeeded()
+        }
+        animator.startAnimation()
+    }
+}
+
+extension OrderTrackingViewController {
+    func set(orderInfo: OrderDetailInfo) {
+        self.orderDetailInfo = orderInfo
+    }
+}
+
+extension OrderTrackingViewController {
+    private func setStartStatus() {
+        self.indicatorStartConstraint.priority = .defaultHigh
+        self.indicatorDelivaryConstraint.priority = .defaultLow
+        self.indicatorCompletionConstraint.priority = .defaultLow
+
+        self.progressStartConstraint.priority = .defaultHigh
+        self.progressDelivaryConstraint.priority = .defaultLow
+        self.progressCompletionConstraint.priority = .defaultLow
+
+        self.startLabel.textColor = self.highlightedColor
+        self.midLabel.textColor = self.defaultColor
+        self.endLabel.textColor = self.defaultColor
+    }
+
+    private func setDelivaryStatus() {
+        self.indicatorStartConstraint.priority = .defaultLow
+        self.indicatorDelivaryConstraint.priority = .defaultHigh
+        self.indicatorCompletionConstraint.priority = .defaultLow
+
+        self.progressStartConstraint.priority = .defaultLow
+        self.progressDelivaryConstraint.priority = .defaultHigh
+        self.progressCompletionConstraint.priority = .defaultLow
+
+        self.startLabel.textColor = self.highlightedColor
+        self.midLabel.textColor = self.highlightedColor
+        self.endLabel.textColor = self.defaultColor
+    }
+
+    private func setCompleteStatus() {
+        self.indicatorStartConstraint.priority = .defaultLow
+        self.indicatorDelivaryConstraint.priority = .defaultLow
+        self.indicatorCompletionConstraint.priority = .defaultHigh
+
+        self.progressStartConstraint.priority = .defaultLow
+        self.progressDelivaryConstraint.priority = .defaultLow
+        self.progressCompletionConstraint.priority = .defaultHigh
+
+        self.startLabel.textColor = self.highlightedColor
+        self.midLabel.textColor = self.highlightedColor
+        self.endLabel.textColor = self.highlightedColor
+    }
 }
