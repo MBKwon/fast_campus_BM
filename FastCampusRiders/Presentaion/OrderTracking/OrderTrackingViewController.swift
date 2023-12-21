@@ -39,7 +39,14 @@ class OrderTrackingViewController: UIViewController {
 
     private(set) var orderDetailInfo: OrderDetailInfo?
 
+    private(set) var microBean: MicroBean<OrderTrackingViewController, OrderTrackingViewModel, OrderTrackingViewInteractor>?
+
     override func viewDidLoad() {
+        super.viewDidLoad()
+        self.microBean = MicroBean(withVC: self,
+                                   viewModel: OrderTrackingViewModel(),
+                                   viewInteractor: OrderTrackingViewInteractor())
+
         self.startPoint.layer.cornerRadius = 4.5
         self.midPoint.layer.cornerRadius = 4.5
         self.endPoint.layer.cornerRadius = 4.5
@@ -47,6 +54,7 @@ class OrderTrackingViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.microBean?.handle(inputMessage: .requestLocationData)
 
         guard let orderDetailInfo = self.orderDetailInfo else {
             assertionFailure("orderDetailInfo is nil")
@@ -66,6 +74,39 @@ class OrderTrackingViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
         animator.startAnimation()
+    }
+}
+
+extension OrderTrackingViewController: ViewControllerConfigurable {
+
+    typealias VM = OrderTrackingViewModel
+
+    typealias I = OrderTrackingInputMessage
+    enum OrderTrackingInputMessage: InputMessage {
+        case requestLocationData
+    }
+
+    typealias O = OrderTrackingOutputMessage
+    enum OrderTrackingOutputMessage: OutputMessage {
+        case updateMapView(locationData: LocationManager.LocationData)
+    }
+}
+
+extension OrderTrackingViewController: ViewContollerInteractable {
+
+    typealias VI = OrderTrackingViewInteractor
+
+    typealias IM = OrderTrackingInteractionMessage
+    enum OrderTrackingInteractionMessage: InteractionMessage {
+        case displayLocationOnMapView(mapView: MKMapView, locationData: LocationManager.LocationData)
+    }
+
+    func convertToInteraction(from outputMessage: OrderTrackingOutputMessage) -> OrderTrackingInteractionMessage {
+        switch outputMessage {
+        case .updateMapView(let locationData):
+            return .displayLocationOnMapView(mapView: self.mapView,
+                                             locationData: locationData)
+        }
     }
 }
 

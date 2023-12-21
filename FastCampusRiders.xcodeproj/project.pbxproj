@@ -21,6 +21,8 @@
 		C3F439562B31AD32004B6B69 /* MapGoogleDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439552B31AD32004B6B69 /* MapGoogleDirections.swift */; };
 		C3F439582B31AD92004B6B69 /* MapKakaoDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439572B31AD92004B6B69 /* MapKakaoDirections.swift */; };
 		C3F4395A2B31ADE3004B6B69 /* MapNaverDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439592B31ADE3004B6B69 /* MapNaverDirections.swift */; };
+		C3F4395E2B3449DF004B6B69 /* OrderTrackingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F4395D2B3449DF004B6B69 /* OrderTrackingViewModel.swift */; };
+		C3F439602B344C3B004B6B69 /* OrderTrackingViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F4395F2B344C3B004B6B69 /* OrderTrackingViewInteractor.swift */; };
 		FE10192C2AB13F270091C91C /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10192B2AB13F270091C91C /* APIController.swift */; };
 		FE1019B42AB2D2940091C91C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B32AB2D2940091C91C /* ArrayExtension.swift */; };
 		FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */; };
@@ -68,6 +70,8 @@
 		C3F439552B31AD32004B6B69 /* MapGoogleDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapGoogleDirections.swift; path = OrderDetail/Directions/MapGoogleDirections.swift; sourceTree = "<group>"; };
 		C3F439572B31AD92004B6B69 /* MapKakaoDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapKakaoDirections.swift; path = OrderDetail/Directions/MapKakaoDirections.swift; sourceTree = "<group>"; };
 		C3F439592B31ADE3004B6B69 /* MapNaverDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapNaverDirections.swift; path = OrderDetail/Directions/MapNaverDirections.swift; sourceTree = "<group>"; };
+		C3F4395D2B3449DF004B6B69 /* OrderTrackingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderTrackingViewModel.swift; path = OrderTracking/OrderTrackingViewModel.swift; sourceTree = "<group>"; };
+		C3F4395F2B344C3B004B6B69 /* OrderTrackingViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderTrackingViewInteractor.swift; path = OrderTracking/OrderTrackingViewInteractor.swift; sourceTree = "<group>"; };
 		FE10192B2AB13F270091C91C /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		FE1019B32AB2D2940091C91C /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderListViewController.swift; path = OrderList/OrderListViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				FEE527802AC91DA400BC682F /* OrderTrackingViewController.swift */,
+				C3F4395F2B344C3B004B6B69 /* OrderTrackingViewInteractor.swift */,
+				C3F4395D2B3449DF004B6B69 /* OrderTrackingViewModel.swift */,
 			);
 			name = OrderTracking;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 				FED5A46F2AC17FD30050F24D /* ItemDetailInfo.swift in Sources */,
 				FED5A4712AC25FD20050F24D /* OrderDetailTitleCell.swift in Sources */,
 				FED5A47F2AC2BEA80050F24D /* OrderListTableViewCell.swift in Sources */,
+				C3F439602B344C3B004B6B69 /* OrderTrackingViewInteractor.swift in Sources */,
 				FE9AD8102ABD4E5300535B47 /* OrderDetailDescriptionCell.swift in Sources */,
 				C30369492B2870B90079B372 /* OrderListViewInteractor.swift in Sources */,
 				C3F439562B31AD32004B6B69 /* MapGoogleDirections.swift in Sources */,
@@ -402,6 +409,7 @@
 				FEE5277F2AC6A8FF00BC682F /* PhotoManager.swift in Sources */,
 				FED5A4752AC263F20050F24D /* LocationDetailInfo.swift in Sources */,
 				FE19AF1C2AA9578E00FE09A8 /* LocationManager.swift in Sources */,
+				C3F4395E2B3449DF004B6B69 /* OrderTrackingViewModel.swift in Sources */,
 				FE19AEF82AA6C0EE00FE09A8 /* AppDelegate.swift in Sources */,
 				C3F4395A2B31ADE3004B6B69 /* MapNaverDirections.swift in Sources */,
 				FE1019CB2AB3FB370091C91C /* OrderDetailViewController.swift in Sources */,
