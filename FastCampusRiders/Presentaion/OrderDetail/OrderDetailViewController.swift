@@ -42,11 +42,10 @@ class OrderDetailViewController: UITableViewController {
         if let vc = segue.destination as? OrderTrackingViewController,
            let orderInfo = sender as? OrderDetailInfo {
             vc.set(orderInfo: orderInfo)
+        } else if let vc = segue.destination as? OrderCompletionViewController,
+           let orderID = sender as? String {
+            vc.set(orderID: orderID)
         }
-//        else if let vc = segue.destination as? OrderCompletionViewController,
-//           let orderID = sender as? String {
-//            vc.set(orderID: orderID)
-//        }
     }
 
     func set(orderID: String) {
