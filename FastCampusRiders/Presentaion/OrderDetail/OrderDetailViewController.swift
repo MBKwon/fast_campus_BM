@@ -37,6 +37,16 @@ class OrderDetailViewController: UITableViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        /* Demo code for drawing route */
+        /*self.microBean?.handle(interactionMessage: .drawRoute(locations: [
+            CLLocation(latitude: 37.3589, longitude: 127.1055),
+            CLLocation(latitude: 37.5159, longitude: 127.0989)
+        ],  vc: self))*/
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if let vc = segue.destination as? OrderTrackingViewController,
