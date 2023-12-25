@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import MBAkit
 
 struct ItemDetailInfo: Decodable {
     let id: Int64
