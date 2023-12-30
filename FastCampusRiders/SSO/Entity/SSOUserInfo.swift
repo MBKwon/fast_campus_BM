@@ -9,7 +9,7 @@ import Foundation
 
 struct SSOUserInfo: Decodable {
     let userID: String
-    let riderName: TimeInterval
+    let riderName: String
 
     enum CodingKeys: String, CodingKey {
         case userID = "id"

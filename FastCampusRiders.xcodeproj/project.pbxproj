@@ -15,6 +15,8 @@
 		C3DDE2552B3997B300D39874 /* IssueTokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDE2542B3997B300D39874 /* IssueTokenInfo.swift */; };
 		C3DDE2572B3997DD00D39874 /* RefreshTokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDE2562B3997DD00D39874 /* RefreshTokenInfo.swift */; };
 		C3DDE2592B3997E700D39874 /* SSOUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDE2582B3997E700D39874 /* SSOUserInfo.swift */; };
+		C3DDE25B2B402D2A00D39874 /* SSO.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DDE25A2B402D2A00D39874 /* SSO.storyboard */; };
+		C3DDE25D2B402D3A00D39874 /* SSOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDE25C2B402D3A00D39874 /* SSOViewController.swift */; };
 		FE10192C2AB13F270091C91C /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE10192B2AB13F270091C91C /* APIController.swift */; };
 		FE1019B42AB2D2940091C91C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B32AB2D2940091C91C /* ArrayExtension.swift */; };
 		FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */; };
@@ -70,6 +72,8 @@
 		C3DDE2542B3997B300D39874 /* IssueTokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTokenInfo.swift; sourceTree = "<group>"; };
 		C3DDE2562B3997DD00D39874 /* RefreshTokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenInfo.swift; sourceTree = "<group>"; };
 		C3DDE2582B3997E700D39874 /* SSOUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSOUserInfo.swift; sourceTree = "<group>"; };
+		C3DDE25A2B402D2A00D39874 /* SSO.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SSO.storyboard; sourceTree = "<group>"; };
+		C3DDE25C2B402D3A00D39874 /* SSOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSOViewController.swift; sourceTree = "<group>"; };
 		FE10192B2AB13F270091C91C /* APIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
 		FE1019B32AB2D2940091C91C /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		FE1019B82AB2E1F00091C91C /* OrderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OrderListViewController.swift; path = OrderList/OrderListViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 			children = (
 				C3DDE2532B39979200D39874 /* Entity */,
 				C3DDE24C2B395DA300D39874 /* SSOController.swift */,
+				C3DDE25C2B402D3A00D39874 /* SSOViewController.swift */,
+				C3DDE25A2B402D2A00D39874 /* SSO.storyboard */,
 			);
 			path = SSO;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 			files = (
 				FE19AF042AA6C0EF00FE09A8 /* LaunchScreen.storyboard in Resources */,
 				FE19AF012AA6C0EF00FE09A8 /* Assets.xcassets in Resources */,
+				C3DDE25B2B402D2A00D39874 /* SSO.storyboard in Resources */,
 				FE19AEFF2AA6C0EE00FE09A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +435,7 @@
 				FED5A4812AC2C5150050F24D /* OrderCompletionViewController.swift in Sources */,
 				FED5A4772AC26CF40050F24D /* OrderDetailMemoCell.swift in Sources */,
 				FED5A4732AC262C30050F24D /* OrderDetailContactCell.swift in Sources */,
+				C3DDE25D2B402D3A00D39874 /* SSOViewController.swift in Sources */,
 				FED5A46A2AC117C60050F24D /* MapNaverDirections.swift in Sources */,
 				FE19AF292AAAC63000FE09A8 /* FCStackView.swift in Sources */,
 				FED5A4692AC117C60050F24D /* MapManager.swift in Sources */,

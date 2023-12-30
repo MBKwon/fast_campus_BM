@@ -13,6 +13,7 @@ class SSOController {
 
     enum SSOStatus {
         case startAuth(id: String, password: String)
+        case startAuthWithToken(token: String)
         case requestToken(id: String, password: String)
         case refreshAccessToken(refreshToken: String)
         case requestUserInfo(accessToken: String)
@@ -20,6 +21,7 @@ class SSOController {
     }
 
     enum SSOError: Error {
+        case noUserAccount
         case noAppID
         case noAppSecret
         case needRefresh
@@ -34,6 +36,8 @@ class SSOController {
     private let keychain: Keychain
 
     enum SSOKeychainKey: String {
+        case userName
+        case password
         case accessToken
         case refreshToken
         case userInfo
@@ -49,7 +53,7 @@ class SSOController {
         }
         self.appID = appID
 
-        guard let appSecret = mainBudle.object(forInfoDictionaryKey: "appID") as? String else {
+        guard let appSecret = mainBudle.object(forInfoDictionaryKey: "appSecret") as? String else {
             assertionFailure("noAppSecret")
             return
         }
@@ -59,7 +63,17 @@ class SSOController {
 
 // public methods
 extension SSOController {
-    func checkAndGetUserInfo(id: String, password: String) async -> Result<SSOStatus, Error> {
+    func checktUserInfo() async -> Result<SSOStatus, Error> {
+
+        guard let userName = self.keychain[SSOKeychainKey.userName.rawValue],
+              let password = self.keychain[SSOKeychainKey.password.rawValue] else {
+            return .failure(SSOError.noUserAccount)
+        }
+
+        return await self.readUserInfo(id: userName, password: password)
+    }
+
+    func readUserInfo(id: String, password: String) async -> Result<SSOStatus, Error> {
         await Result.success(SSOStatus.startAuth(id: id, password: password))
             .flatMap(self.validateToken(_:))
             .flatMapAsync(self.requestToken(_:))
@@ -67,28 +81,39 @@ extension SSOController {
             .flatMapAsync(self.requestUserInfo(_:))
     }
 
+    func readUserInfo(accessToken: String) async -> Result<SSOStatus, Error> {
+        await Result.success(SSOStatus.startAuthWithToken(token: accessToken))
+            .flatMap(self.validateToken(_:))
+            .flatMapAsync(self.requestToken(_:))
+            .flatMapAsync(self.refreshToken(_:))
+            .flatMapAsync(self.requestUserInfo(_:))
+    }
 }
 
 // private methods
 extension SSOController {
 
     private func validateToken(_ status: SSOStatus) -> Result<SSOStatus, Error> {
-        guard case .startAuth(let id, let password) = status else {
-            return .success(status)
-        }
-
-        guard let accessToken = self.keychain[SSOKeychainKey.accessToken.rawValue] else {
-            return .failure(SSOError.expiredToken)
-        }
-
-        // Call token validation API
-        let isValid = arc4random() % 2 == 1 ? true : false
-        if isValid {
-            return .success(.requestUserInfo(accessToken: accessToken))
-        } else if let refreshToken = self.keychain[SSOKeychainKey.refreshToken.rawValue] {
-            return .success(.refreshAccessToken(refreshToken: refreshToken))
-        } else {
+        if case .startAuth(let id, let password) = status {
             return .success(.requestToken(id: id, password: password))
+
+        } else if case .startAuthWithToken(let token) = status {
+            return .success(.requestUserInfo(accessToken: token))
+
+        } else {
+            guard let accessToken = self.keychain[SSOKeychainKey.accessToken.rawValue] else {
+                return .failure(SSOError.expiredToken)
+            }
+
+            // Call token validation API
+            let isValid = arc4random() % 2 == 1 ? true : false
+            if isValid {
+                return .success(.requestUserInfo(accessToken: accessToken))
+            } else if let refreshToken = self.keychain[SSOKeychainKey.refreshToken.rawValue] {
+                return .success(.refreshAccessToken(refreshToken: refreshToken))
+            } else {
+                return .failure(SSOError.noUserAccount)
+            }
         }
     }
 

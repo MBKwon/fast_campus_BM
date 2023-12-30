@@ -32,11 +32,12 @@ extension APIController {
                 case .orderList:
                     return "/order_info_v6"
                 case .issueToken(let appID, let secret, let id, let password):
-                    return "/issue_token/\(appID)_\(secret)_\(id)_\(password)"
+                    print("")
+                    return "/issue_token"
                 case .refreshToken(let appID, let secret, let refreshToken):
-                    return "/refresh_token/\(appID)_\(secret)_\(refreshToken)"
+                    return "/refresh_token"
                 case .readUserInfo(let appID, let secret, let accessToken):
-                    return "/user_info/\(appID)_\(secret)_\(accessToken)"
+                    return "/user_info"
             }
         }
 

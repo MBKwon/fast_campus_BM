@@ -13,6 +13,6 @@ struct RefreshTokenInfo: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"
-        case expirationTime = "access_token_experation"
+        case expirationTime = "access_token_expiration"
     }
 }
