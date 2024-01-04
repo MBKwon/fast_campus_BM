@@ -15,13 +15,14 @@ final class OrderListViewController: UIViewController {
 
     @IBOutlet weak var orderListView: UITableView!
     @IBOutlet weak var orderCategoryViewHeight: NSLayoutConstraint!
-    
+
     private(set) var cancellables = Set<AnyCancellable>()
     private(set) var microBean: MicroBean<OrderListViewController,
                                           OrderListViewModel,
                                           OrderListViewInteractor>?
 
     enum SegueIdentifier {
+        static let showLogin = "showLogin"
         static let goToOrderDetail = "goToOrderDetail"
     }
 
@@ -33,23 +34,41 @@ final class OrderListViewController: UIViewController {
                                    viewInteractor: OrderListViewInteractor())
 
         self.bindCategoryEvent()
-        self.microBean?.handle(inputMessage: .getOrderList)
+        self.updateData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.microBean?.handle(interactionMessage: .resumeTimer)
+        if self.orderListView.numberOfRows(inSection: 0) > 0 {
+            self.microBean?.handle(interactionMessage: .resumeTimer)
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.microBean?.handle(interactionMessage: .suspendTimer)
+        if self.orderListView.numberOfRows(inSection: 0) > 0 {
+            self.microBean?.handle(interactionMessage: .suspendTimer)
+        }
+    }
+}
+
+
+extension OrderListViewController {
+
+    private func updateData() {
+        self.performSegue(withIdentifier: SegueIdentifier.showLogin, sender: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? OrderDetailViewController,
            let orderID = sender as? String {
             vc.set(orderID: orderID)
+        } else if let vc = segue.destination as? SSOViewController {
+            vc.afterLoginBlock = {
+                vc.dismiss(animated: true)
+                self.microBean?.handle(inputMessage: .getOrderList)
+                self.microBean?.handle(interactionMessage: .resumeTimer)
+            }
         } else {
             assertionFailure("undefined order ID")
         }

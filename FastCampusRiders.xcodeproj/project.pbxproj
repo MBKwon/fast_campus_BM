@@ -17,6 +17,12 @@
 		C30369592B2882700079B372 /* OrderDetailViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369582B2882700079B372 /* OrderDetailViewDelegate.swift */; };
 		C355C4972AD10837002F0705 /* FCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355C4962AD10837002F0705 /* FCConstants.swift */; };
 		C3DDE2612B46C6CA00D39874 /* SSO.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DDE2602B46C6CA00D39874 /* SSO.storyboard */; };
+		C3DDE2642B46CB7300D39874 /* IssueTokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDE2632B46CB7300D39874 /* IssueTokenInfo.swift */; };
+		C3DDE2662B46CB9800D39874 /* RefreshTokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDE2652B46CB9800D39874 /* RefreshTokenInfo.swift */; };
+		C3DDE2682B46CBB500D39874 /* SSOUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDE2672B46CBB500D39874 /* SSOUserInfo.swift */; };
+		C3DDE26A2B46CBF500D39874 /* SSOController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDE2692B46CBF500D39874 /* SSOController.swift */; };
+		C3DDE26D2B46CC5400D39874 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = C3DDE26C2B46CC5400D39874 /* KeychainAccess */; };
+		C3DDE26F2B46D39000D39874 /* SSOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DDE26E2B46D39000D39874 /* SSOViewController.swift */; };
 		C3F439522B31AA6D004B6B69 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439512B31AA6D004B6B69 /* MapManager.swift */; };
 		C3F439542B31ABE0004B6B69 /* MapAppleDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439532B31ABE0004B6B69 /* MapAppleDirections.swift */; };
 		C3F439562B31AD32004B6B69 /* MapGoogleDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439552B31AD32004B6B69 /* MapGoogleDirections.swift */; };
@@ -69,6 +75,11 @@
 		C30369582B2882700079B372 /* OrderDetailViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailViewDelegate.swift; path = OrderDetail/Delegate/OrderDetailViewDelegate.swift; sourceTree = "<group>"; };
 		C355C4962AD10837002F0705 /* FCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCConstants.swift; sourceTree = "<group>"; };
 		C3DDE2602B46C6CA00D39874 /* SSO.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SSO.storyboard; sourceTree = "<group>"; };
+		C3DDE2632B46CB7300D39874 /* IssueTokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTokenInfo.swift; sourceTree = "<group>"; };
+		C3DDE2652B46CB9800D39874 /* RefreshTokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenInfo.swift; sourceTree = "<group>"; };
+		C3DDE2672B46CBB500D39874 /* SSOUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSOUserInfo.swift; sourceTree = "<group>"; };
+		C3DDE2692B46CBF500D39874 /* SSOController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSOController.swift; sourceTree = "<group>"; };
+		C3DDE26E2B46D39000D39874 /* SSOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSOViewController.swift; sourceTree = "<group>"; };
 		C3F439512B31AA6D004B6B69 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapManager.swift; path = OrderDetail/Directions/MapManager.swift; sourceTree = "<group>"; };
 		C3F439532B31ABE0004B6B69 /* MapAppleDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapAppleDirections.swift; path = OrderDetail/Directions/MapAppleDirections.swift; sourceTree = "<group>"; };
 		C3F439552B31AD32004B6B69 /* MapGoogleDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapGoogleDirections.swift; path = OrderDetail/Directions/MapGoogleDirections.swift; sourceTree = "<group>"; };
@@ -116,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3DDE26D2B46CC5400D39874 /* KeychainAccess in Frameworks */,
 				FEE527322AC5A53F00BC682F /* MBAkit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,9 +156,22 @@
 		C3DDE25F2B46C6B300D39874 /* SSO */ = {
 			isa = PBXGroup;
 			children = (
+				C3DDE2622B46CB5C00D39874 /* Entity */,
+				C3DDE2692B46CBF500D39874 /* SSOController.swift */,
+				C3DDE26E2B46D39000D39874 /* SSOViewController.swift */,
 				C3DDE2602B46C6CA00D39874 /* SSO.storyboard */,
 			);
 			path = SSO;
+			sourceTree = "<group>";
+		};
+		C3DDE2622B46CB5C00D39874 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C3DDE2632B46CB7300D39874 /* IssueTokenInfo.swift */,
+				C3DDE2652B46CB9800D39874 /* RefreshTokenInfo.swift */,
+				C3DDE2672B46CBB500D39874 /* SSOUserInfo.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		C3F439502B31AA3B004B6B69 /* Directions */ = {
@@ -342,6 +367,7 @@
 			name = FastCampusRiders;
 			packageProductDependencies = (
 				FEE527312AC5A53F00BC682F /* MBAkit */,
+				C3DDE26C2B46CC5400D39874 /* KeychainAccess */,
 			);
 			productName = FastCampusRiders;
 			productReference = FE19AEF42AA6C0EE00FE09A8 /* FastCampusRiders.app */;
@@ -373,6 +399,7 @@
 			mainGroup = FE19AEEB2AA6C0EE00FE09A8;
 			packageReferences = (
 				FEE527302AC5A53F00BC682F /* XCRemoteSwiftPackageReference "MBA-kit" */,
+				C3DDE26B2B46CC5400D39874 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = FE19AEF52AA6C0EE00FE09A8 /* Products */;
 			projectDirPath = "";
@@ -406,7 +433,9 @@
 				C30369562B28808C0079B372 /* OrderDetailViewInteractor.swift in Sources */,
 				FED5A4812AC2C5150050F24D /* OrderCompletionViewController.swift in Sources */,
 				FED5A4772AC26CF40050F24D /* OrderDetailMemoCell.swift in Sources */,
+				C3DDE26F2B46D39000D39874 /* SSOViewController.swift in Sources */,
 				C3F439522B31AA6D004B6B69 /* MapManager.swift in Sources */,
+				C3DDE2662B46CB9800D39874 /* RefreshTokenInfo.swift in Sources */,
 				FED5A4732AC262C30050F24D /* OrderDetailContactCell.swift in Sources */,
 				FE19AF292AAAC63000FE09A8 /* FCStackView.swift in Sources */,
 				FE9AD8142ABD67B900535B47 /* ControlExtension.swift in Sources */,
@@ -419,10 +448,12 @@
 				C30369492B2870B90079B372 /* OrderListViewInteractor.swift in Sources */,
 				C3F439562B31AD32004B6B69 /* MapGoogleDirections.swift in Sources */,
 				FED5A4792AC282A00050F24D /* OrderDetailReceiptCell.swift in Sources */,
+				C3DDE2682B46CBB500D39874 /* SSOUserInfo.swift in Sources */,
 				C30369472B2870000079B372 /* OrderListViewModel.swift in Sources */,
 				C3F439542B31ABE0004B6B69 /* MapAppleDirections.swift in Sources */,
 				FE1019C02AB2E1F00091C91C /* OrderListViewController.swift in Sources */,
 				FE19AF1A2AA9578E00FE09A8 /* DataManager.swift in Sources */,
+				C3DDE2642B46CB7300D39874 /* IssueTokenInfo.swift in Sources */,
 				FE1019C92AB3F8190091C91C /* IntExtension.swift in Sources */,
 				C355C4972AD10837002F0705 /* FCConstants.swift in Sources */,
 				FEE5277F2AC6A8FF00BC682F /* PhotoManager.swift in Sources */,
@@ -438,6 +469,7 @@
 				FE10192C2AB13F270091C91C /* APIController.swift in Sources */,
 				C3F439582B31AD92004B6B69 /* MapKakaoDirections.swift in Sources */,
 				FE1019C72AB3F63E0091C91C /* ViewExtension.swift in Sources */,
+				C3DDE26A2B46CBF500D39874 /* SSOController.swift in Sources */,
 				C30369502B2877EB0079B372 /* InProgressOrderListDelegate.swift in Sources */,
 				C30369592B2882700079B372 /* OrderDetailViewDelegate.swift in Sources */,
 				C3F439642B3460DE004B6B69 /* OrderCompletionViewInteractor.swift in Sources */,
@@ -673,6 +705,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C3DDE26B2B46CC5400D39874 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
 		FEE527302AC5A53F00BC682F /* XCRemoteSwiftPackageReference "MBA-kit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MBKwon/MBA-kit.git";
@@ -684,6 +724,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C3DDE26C2B46CC5400D39874 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C3DDE26B2B46CC5400D39874 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
 		FEE527312AC5A53F00BC682F /* MBAkit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FEE527302AC5A53F00BC682F /* XCRemoteSwiftPackageReference "MBA-kit" */;
