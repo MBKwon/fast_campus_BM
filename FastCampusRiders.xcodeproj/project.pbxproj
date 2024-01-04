@@ -16,6 +16,7 @@
 		C30369562B28808C0079B372 /* OrderDetailViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369552B28808C0079B372 /* OrderDetailViewInteractor.swift */; };
 		C30369592B2882700079B372 /* OrderDetailViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30369582B2882700079B372 /* OrderDetailViewDelegate.swift */; };
 		C355C4972AD10837002F0705 /* FCConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C355C4962AD10837002F0705 /* FCConstants.swift */; };
+		C3DDE2612B46C6CA00D39874 /* SSO.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DDE2602B46C6CA00D39874 /* SSO.storyboard */; };
 		C3F439522B31AA6D004B6B69 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439512B31AA6D004B6B69 /* MapManager.swift */; };
 		C3F439542B31ABE0004B6B69 /* MapAppleDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439532B31ABE0004B6B69 /* MapAppleDirections.swift */; };
 		C3F439562B31AD32004B6B69 /* MapGoogleDirections.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F439552B31AD32004B6B69 /* MapGoogleDirections.swift */; };
@@ -67,6 +68,7 @@
 		C30369552B28808C0079B372 /* OrderDetailViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailViewInteractor.swift; path = OrderDetail/OrderDetailViewInteractor.swift; sourceTree = "<group>"; };
 		C30369582B2882700079B372 /* OrderDetailViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OrderDetailViewDelegate.swift; path = OrderDetail/Delegate/OrderDetailViewDelegate.swift; sourceTree = "<group>"; };
 		C355C4962AD10837002F0705 /* FCConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCConstants.swift; sourceTree = "<group>"; };
+		C3DDE2602B46C6CA00D39874 /* SSO.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SSO.storyboard; sourceTree = "<group>"; };
 		C3F439512B31AA6D004B6B69 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapManager.swift; path = OrderDetail/Directions/MapManager.swift; sourceTree = "<group>"; };
 		C3F439532B31ABE0004B6B69 /* MapAppleDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapAppleDirections.swift; path = OrderDetail/Directions/MapAppleDirections.swift; sourceTree = "<group>"; };
 		C3F439552B31AD32004B6B69 /* MapGoogleDirections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapGoogleDirections.swift; path = OrderDetail/Directions/MapGoogleDirections.swift; sourceTree = "<group>"; };
@@ -139,6 +141,14 @@
 			name = Delegate;
 			sourceTree = "<group>";
 		};
+		C3DDE25F2B46C6B300D39874 /* SSO */ = {
+			isa = PBXGroup;
+			children = (
+				C3DDE2602B46C6CA00D39874 /* SSO.storyboard */,
+			);
+			path = SSO;
+			sourceTree = "<group>";
+		};
 		C3F439502B31AA3B004B6B69 /* Directions */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +208,7 @@
 				FE19AF152AA9576C00FE09A8 /* Domain */,
 				FE19AF272AAAC61700FE09A8 /* Intermidiate */,
 				FE19AF0B2AA9555000FE09A8 /* Presentaion */,
+				C3DDE25F2B46C6B300D39874 /* SSO */,
 				FE19AF002AA6C0EF00FE09A8 /* Assets.xcassets */,
 				FE19AF022AA6C0EF00FE09A8 /* LaunchScreen.storyboard */,
 				FE19AF052AA6C0EF00FE09A8 /* Info.plist */,
@@ -379,6 +390,7 @@
 			files = (
 				FE19AF042AA6C0EF00FE09A8 /* LaunchScreen.storyboard in Resources */,
 				FE19AF012AA6C0EF00FE09A8 /* Assets.xcassets in Resources */,
+				C3DDE2612B46C6CA00D39874 /* SSO.storyboard in Resources */,
 				FE19AEFF2AA6C0EE00FE09A8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
