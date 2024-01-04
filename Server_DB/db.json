@@ -1,8 +1,12 @@
 {
-    "oauth_info": {
+    "issue_token": {
         "access_token": "asdf89-asd8989-9798989",
-        "access_token_experation": 86400,
+        "access_token_expiration": 86400.00,
         "refresh_token": "asdfadf-1341324-9798989"
+    },
+    "refresh_token": {
+        "access_token": "zxcv89-qwe8989-9123489",
+        "access_token_expiration": 86400.00
     },
     "user_info": {
         "id": "rider_11",
